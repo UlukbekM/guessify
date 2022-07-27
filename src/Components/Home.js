@@ -1,0 +1,16 @@
+import React from "react";
+import { Header } from "./Header";
+// https://www.youtube.com/watch?v=wBq3HCvYfUg
+//https://discoverquickly.com/
+
+export const CLIENT_ID = 'a36fba8567644702b88f6cab02ecfffa'
+export const REDIRECT_URI = 'http://localhost:3000'
+export const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
+export const RESPONSE_TYPE = 'token'
+export const SCOPE = 'user-top-read'
+
+export const Home = () => {
+    return (<>
+    <Header/>
+    </>)
+}

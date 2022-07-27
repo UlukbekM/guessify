@@ -5,9 +5,420 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to bottom right,#1DB954, #083a1a);
+  height: '100%';
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-color: ; */
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.tab {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #168b3f;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+.tab:hover {
+  background-color: #ffffff;
+  color: #191414;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.playlistContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playlistContainer > * {
+  margin: 1rem;
+}
+
+.playlistItem {
+  padding: 1rem;
+  text-align: center;
+  background-color: #181818;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: large;
+}
+
+.playlistItem:hover {
+  background-color: #282828;
+}
+
+.playlistItem img {
+  cursor: pointer;
+}
+
+.playlistItem p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  padding: 1rem 0 0.5rem 0;
+}
+
+.trackContainer {
+  display: block;
+  background-color: #282828;
+  padding: 1rem;
+  /* margin: 1rem; */
+}
+
+.trackItem {
+  background: #191414;
+  margin: 1rem;
+  /* padding: 1rem; */
+  display: block;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.trackItemPartImage {
+  padding: 1rem;
+  flex: 0.5;
+}
+
+.trackItemPartImages {
+  cursor: pointer;
+  opacity: 1;
+  filter: none;
+  -webkit-filter: brightness(90%) grayscale(0%);
+}
+
+.trackItemPartImages:hover {
+  filter: none;
+  -webkit-filter: brightness(120%) blur(1px);
+}
+
+.trackItemPartCounter {
+  padding: 1rem;
+  flex: 0;
+}
+
+.trackItemPart {
+  padding: 1rem;
+  flex: 2;
+}
+
+.trackContainer p{
+  color: #ffffff;
+}
+
+.trackContainer h4{
+  color: #727272;
+}
+
+.playlistCoverContainer {
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+  margin: 1rem;
+}
+
+.playlistCoverTitle {
+  display: block;
+}
+
+.playlistCoverItem {
+  padding: 0.5rem;
+}
+
+.biggerFont {
+  font-size:xx-large;
+  font-weight: bold;
+}
+
+.pageContainer {
+  /* padding: 1rem; */
+  margin: 1rem;
+  color: #ffffff;
+}
+
+.pageContainer h3 {
+  margin: 1rem;
+  font-size: xx-large;
+}
+
+.mediaPlayer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  z-index: -1;
+}
+
+.topArtistsContainer {
+  display: block;
+  /* flex-wrap: wrap; */
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 1rem;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.topArtistsContainerItem {
+  display: flex;
+}
+
+.topArtistsContainerItemTop1 {
+  flex: 1;
+  margin: 1rem;
+  pad: 2rem;
+}
+
+.topArtistsContainerItemTop2 {
+  flex: 3;
+  margin: 1rem;
+  pad: 2rem;
+}
+
+.topArtists {
+  color: #ffffff;
+  text-align: center;
+  background-color: #191414;
+  margin: 1rem;
+  border-radius: 5px;
+  /* width: 10rem;
+  height: 100%; */
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+}
+
+.topArtists img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50px;
+}
+
+.topArtistItem {
+  padding: 0 5rem 0 5rem;
+  width: 10%;
+}
+
+.topContainer {
+  display: flex;
+  background-color: #191414;
+  padding: 1rem;
+  color: #fff;
+  margin: 0.1rem;
+  border-radius: 5px;
+}
+
+.tA img{
+  object-fit: cover;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+
+.tT img{
+  object-fit: cover;
+  width: 7rem;
+  height: 7rem;
+}
+
+.f0 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.f1 {
+  flex: 0.25;
+  margin: 0;
+}
+
+.f2 {
+  flex: 3;
+  margin: 0;
+}
+
+.topArtist {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.t1 {
+  flex: 1;
+  padding: 0 2rem 0 2rem;
+  font-size: large;
+}
+
+.flex {
+  display: flex;
+}
+
+.topOptions {
+  background-color: #191414;
+  color: #fff;
+  border-radius: 5px;
+  margin: 1rem;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.topOptionsItem {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topOptionsItem img{
+  object-fit: cover;
+  width: 7rem;
+  height: 7rem;
+
+  border-radius: 50%;
+  background-color: #168b3f;
+  margin: 1rem;
+}
+
+.topButton{
+  all: unset;
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid #fff;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+.topButton:hover {
+  background-color: #fff;
+  color: #191414;
+}
+
+.highlight {
+  all: unset;
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid #fff;
+  margin: 1rem;
+  background-color: #fff;
+  color: #191414;
+  font-weight: bold;
+}
+
+.topSongItem {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.fSmaller {
+  flex: 0.25;
+}
+
+.fSmall {
+  flex: 0.5;
+  margin: 0;
+}
+
+.fNormal {
+  flex: 1;
+  margin: 0;
+}
+
+.fLarge {
+  flex: 2;
+}
+
+.playlistTop {
+  display: flex;
+  width: 100%;
+}
+
+.playlistTopItem {
+  /* padding: 0.25rem; */
+  margin: 0.5rem 0 0 0.5rem;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  color: #727272;
+}
+
+.playlistTopItem h3{
+  color: #fff;
+}
+
+.playlistTitle {
+  display: grid;
+  padding: 1rem;
+}
+
+.rangeContainer {
+  text-align: left;
+}
+
+.rangeButton {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid #fff;
+  margin: 1rem;
+  color:#191414;
+}
+
+.rangeButton:hover {
+  border-bottom: 3px solid #191414;
+  border-radius: 5px;
+}
+
+.rangeButtonSelected {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid #fff;
+  margin: 1rem;
+  color:#191414;
+
+  border-bottom: 3px solid #191414;
+  border-radius: 5px;
+  /* font-weight: bold; */
 }
