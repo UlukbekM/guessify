@@ -22,12 +22,12 @@ export const Header = () => {
         }
 
         // let tempTime = Date.now()+4000000
-        if(!(time+3600000 >= Date.now())) {
-            console.log('loggouted!')
-            logout()
-        } else {
-            setToken(token)
-        }
+        // if(!(time+3600000 >= Date.now())) {
+        //     console.log('loggouted!')
+        //     logout()
+        // } else {
+        //     setToken(token)
+        // }
         // console.log(time)
         // console.log(Date.now())
     }, [])
