@@ -20,6 +20,7 @@ export const Header = () => {
             let unixTime = d.getTime();
             window.localStorage.setItem("time",unixTime)
         }
+            setToken(token)
 
         // let tempTime = Date.now()+4000000
         // if(!(time+3600000 >= Date.now())) {
