@@ -25,7 +25,7 @@ export const Header = () => {
         if(time) {
             if(time+3600000 >= Date.now()) {
                 console.log('logged out')
-                window.removeItem("time")
+                window.localStorage.removeItem("time")
                 logout()
             } else {
                 setToken(token)
