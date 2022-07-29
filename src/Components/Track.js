@@ -88,11 +88,11 @@ export const Track = (song) => {
         });
     }
 
-    // let imgURL = ''
-    // if(song.track.album.images.length > 0) {
-    //     imgURL = song.track.album.images[0].url
+    let imgURL = ''
+    if(song.track.album.images.length > 0) {
+        imgURL = song.track.album.images[0].url
         // console.log(song.track.album.images)
-    // }
+    }
 
     // const removedCheck = (code) => {
     //     if(imgURL === '') {
@@ -114,9 +114,9 @@ export const Track = (song) => {
         {removedCheck === false ? 
             <div key={song.track.id} className="trackItem">
             <div className="playlistTop">
-                {/* <div className="playlistTopItem fSmaller">
+                <div className="playlistTopItem fSmaller">
                     <p>#</p>
-                </div> */}
+                </div>
                 <div className="playlistTopItem fLarge">
                     <p>TITLE</p>
                 </div>
@@ -137,7 +137,7 @@ export const Track = (song) => {
                 </div>
                 <div className="playlistTopItem fLarge flex">
                     <div>
-                        <img width={"100rem"} src={song.track.album.images[0].url} alt="" className="trackItemPartImages"/>
+                        <img width={"100rem"} src={imgURL} alt="" className="trackItemPartImages"/>
                     </div>
                     <div className="playlistTitle">
                         <div><h3>{song.track.name}</h3></div>

@@ -19,14 +19,19 @@ export const Header = () => {
             const d = new Date();
             let unixTime = d.getTime();
             window.localStorage.setItem("time",unixTime)
+            // console.log(hash)
         }
         setToken(token)
 
         // if(time) {
-        //     if(time+3600000 >= Date.now()) {
-        //         console.log('logged out')
-        //         window.localStorage.removeItem("time")
-        //         logout()
+        //     // if(time+3600000 >= Date.now()) {
+        //     //     console.log('logged out')
+        //     //     window.localStorage.removeItem("time")
+        //     //     logout()
+        //     // }
+        //     // console.log()
+        //     if(parseInt( time ) <= Date.now()+3600000) {
+        //         console.log('timed out')
         //     }
         // }
         // let tempTime = Date.now()+4000000

@@ -49,7 +49,7 @@ export const PlaylistPage = () => {
             }
         })
         setPlaylist(data)
-        console.log(data)
+        // console.log(data)
     }
 
     return(<>

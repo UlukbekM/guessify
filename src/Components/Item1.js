@@ -62,6 +62,7 @@ export const Item1 = () => {
         })
         // console.log(data.items)
         setUserPlaylists(data.items)
+        // console.log(data.items.length)
     }
 
     const getCategories = async (tempToken) => {
@@ -70,7 +71,7 @@ export const Item1 = () => {
                 Authorization: `Bearer ${tempToken}`
             }
         })
-        console.log(data.categories.items)
+        // console.log(data.categories.items)
         setCategories(data.categories.items)
     }
 
@@ -95,15 +96,18 @@ export const Item1 = () => {
             </div>
         </div>
 
-        <div className="pageContainer">
-            <h3>User Playlists</h3>
-            <div className="playlistContainer">
-            {userPlaylists.length > 0 &&
-                userPlaylists.map((playlist,index) => (
-                    <Playlist key={index} {...playlist}/>
-            ))}
+        {userPlaylists.length > 0 ? 
+            <div className="pageContainer">
+                <h3>User Playlists</h3>
+                <div className="playlistContainer">
+                {userPlaylists.length > 0 &&
+                    userPlaylists.map((playlist,index) => (
+                        <Playlist key={index} {...playlist}/>
+                ))}
+                </div>
             </div>
-        </div>
+        : <></>
+        }
 
         <div className="pageContainer">
             <h3>Categories</h3>
