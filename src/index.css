@@ -422,3 +422,57 @@ a:active { text-decoration: none; }
   border-radius: 5px;
   /* font-weight: bold; */
 }
+
+.playlistButton {
+  text-align: right;
+  flex: 1;
+}
+
+.selectedContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #191414;
+  margin: 2rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.selectedContainer > * {
+  margin: 1rem;
+}
+
+.selectedButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedButtons button {
+  all: unset;
+  margin: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  border: 3px solid #fff;
+  /* flex: 1; */
+}
+
+.selectedButtons button:hover {
+  background-color: #fff;
+  color: #191414;
+}
+
+.refreshButton {
+  all: unset;
+  cursor: pointer;
+  background-color: #168b3f;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 20px;
+  transition: all 0.2s ease-in; 
+}
+
+.refreshButton:hover { 
+  transform: scale(1.1); 
+}

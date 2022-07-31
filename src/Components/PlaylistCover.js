@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 
 export const PlaylistCover = (playlist) => {
 
@@ -30,6 +31,9 @@ export const PlaylistCover = (playlist) => {
                 <div className="playlistCoverItem">{playlist.description}</div>
                 <div className="playlistCoverItem biggerFont">{playlist.name}</div>
                 <div className="playlistCoverItem">{owner} • {total + " songs"}</div>
+            </div>
+            <div className="playlistButton">
+                <Link to={`/item3`} state={{ playlistID: playlist.id }}><button className="topButton">Select Playlist</button></Link>
             </div>
         </div>
     </>)

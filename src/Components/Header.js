@@ -23,26 +23,13 @@ export const Header = () => {
         }
         setToken(token)
 
-        // if(time) {
-        //     // if(time+3600000 >= Date.now()) {
-        //     //     console.log('logged out')
-        //     //     window.localStorage.removeItem("time")
-        //     //     logout()
-        //     // }
-        //     // console.log()
-        //     if(parseInt( time ) <= Date.now()+3600000) {
-        //         console.log('timed out')
-        //     }
-        // }
-        // let tempTime = Date.now()+4000000
-        // if(!(time+3600000 >= Date.now())) {
-        //     console.log('loggouted!')
-        //     logout()
-        // } else {
-        //     setToken(token)
-        // }
-        // console.log(time)
-        // console.log(Date.now())
+        if(time) {
+            if(Date.now() >= (parseInt(time)+3600000)) {
+                window.localStorage.removeItem("time")
+                logout()
+            }
+        }
+
     }, [])
 
     const logout = () => {
@@ -83,7 +70,7 @@ export const Header = () => {
                 </Grid>
                 </>: 
                 <>
-                <Grid item xs={7}>
+                <Grid item xs={8}>
                     <div></div>
                     </Grid>
                         <Grid item xs={1}>
@@ -96,11 +83,11 @@ export const Header = () => {
                             <div className="tab noselect">Item 2</div>
                         </Link>
                     </Grid>
-                    <Grid item xs={1}>
+                    {/* <Grid item xs={1}>
                         <Link to="/item3">
                             <div className="tab noselect">Item 3</div>
                         </Link>
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={1}>
                     {!token ?
                     <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>

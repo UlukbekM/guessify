@@ -69,9 +69,13 @@ export const Item1 = () => {
         const {data} = await axios.get(`https://api.spotify.com/v1/browse/categories`, {
             headers: {
                 Authorization: `Bearer ${tempToken}`
+            },
+            params: {
+                country: "US",
+                locale: "sv_US",
             }
         })
-        // console.log(data.categories.items)
+        console.log(data.categories.items)
         setCategories(data.categories.items)
     }
 
@@ -118,6 +122,5 @@ export const Item1 = () => {
             ))}
             </div>
         </div>
-        
     </>)
 }

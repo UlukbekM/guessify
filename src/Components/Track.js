@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from "react";
 // import { getURL } from "./Item1";
 
 export const Track = (song) => {
-
+    // console.log(song)
     const findDifference = (time) => {
         var currenttime  =  new Date().toISOString();
         var d1 = new Date(time)
@@ -104,6 +104,10 @@ export const Track = (song) => {
     //     }
     // }
 
+    const getURI = () => {
+        console.log(song.track.uri)
+    }
+
     let removedCheck = false
 
     if(song.track.album.name === "") {
@@ -137,7 +141,7 @@ export const Track = (song) => {
                 </div>
                 <div className="playlistTopItem fLarge flex">
                     <div>
-                        <img width={"100rem"} src={imgURL} alt="" className="trackItemPartImages"/>
+                        <img width={"100rem"} src={imgURL} alt="" className="trackItemPartImages" onClick={()=>getURI()}/>
                     </div>
                     <div className="playlistTitle">
                         <div><h3>{song.track.name}</h3></div>
