@@ -92,6 +92,28 @@ export const Item3 = () => {
         player.volume = 0.2
     },[songUrl]) // <-- here put the parameter to listen
 
+
+    var array = [];
+    const random4 = () => {
+        while(array.length < 4){
+            var r = Math.floor(Math.random() * 4);
+            if(array.indexOf(r) === -1) array.push(r);
+        }
+    }
+
+    const randomize = (item) => {
+        if(item === array[0]) {
+            return song1
+        } else if(item === array[1]) {
+            return song2
+        } else if(item === array[2]) {
+            return song3
+        } else if(item === array[3]) {
+            return song4
+        }
+        random4()
+    }
+
     return(<>
         <Header/>
         <div className="selectedContainer">
