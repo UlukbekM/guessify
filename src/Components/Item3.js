@@ -2,6 +2,14 @@ import React,{useState, useEffect} from "react";
 import { useLocation } from 'react-router-dom'
 import { Header } from "./Header";
 import axios from 'axios';
+import Slider from '@mui/material/Slider';
+import VolumeDown from '@mui/icons-material/VolumeDown';
+import VolumeUp from '@mui/icons-material/VolumeUp';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 export const Item3 = () => {
     const [token, setToken] = useState("")
@@ -9,14 +17,33 @@ export const Item3 = () => {
     const [playlist, setPlaylist] = useState("")
 
     const [songUrl, setSongUrl] = useState("")
+    const [answer, setAnswer] = useState("")
     const [song1, setSong1] = useState("")
     const [song2, setSong2] = useState("")
     const [song3, setSong3] = useState("")
     const [song4, setSong4] = useState("")
 
+    const [volume, setVolume] = useState(20);
 
     const location = useLocation()
     const { playlistID } = location.state
+
+    const handleChange = (event, newValue) => {
+        setVolume(newValue);
+    };
+
+    useEffect(() => {
+        let player = document.getElementById('audioPlayer')
+        // player.currentTime = 0
+        player.play()
+        console.log('change!')
+    },[songUrl]) // <-- here put the parameter to listen
+
+    useEffect(() => {
+        let player = document.getElementById('audioPlayer')
+        player.volume = volume/100
+        console.log('change!')
+    },[volume]) // <-- here put the parameter to listen
 
     useEffect(() => {
         const hash = window.location.hash
@@ -57,10 +84,20 @@ export const Item3 = () => {
             if(arr.indexOf(r) === -1) arr.push(r);
         }
         setSongUrl(data.tracks.items[arr[0]].track.preview_url)
-        setSong1(data.tracks.items[arr[0]].track.name)
-        setSong2(data.tracks.items[arr[1]].track.name)
-        setSong3(data.tracks.items[arr[2]].track.name)
-        setSong4(data.tracks.items[arr[3]].track.name)
+        setAnswer(data.tracks.items[arr[0]].track.name)
+
+        var containerArray = []
+        containerArray.push(data.tracks.items[arr[0]].track.name)
+        containerArray.push(data.tracks.items[arr[1]].track.name)
+        containerArray.push(data.tracks.items[arr[2]].track.name)
+        containerArray.push(data.tracks.items[arr[3]].track.name)
+
+        containerArray.sort(() => Math.random() - 0.5);
+
+        setSong1(containerArray[0])
+        setSong2(containerArray[1])
+        setSong3(containerArray[2])
+        setSong4(containerArray[3])
     }
 
     const newSong = () => {
@@ -70,14 +107,24 @@ export const Item3 = () => {
             if(arr.indexOf(r) === -1) arr.push(r);
         }
         setSongUrl(playlist.tracks.items[arr[0]].track.preview_url)
-        setSong1(playlist.tracks.items[arr[0]].track.name)
-        setSong2(playlist.tracks.items[arr[1]].track.name)
-        setSong3(playlist.tracks.items[arr[2]].track.name)
-        setSong4(playlist.tracks.items[arr[3]].track.name)
+        setAnswer(playlist.tracks.items[arr[0]].track.name)
+        
+        var containerArray = []
+        containerArray.push(playlist.tracks.items[arr[0]].track.name)
+        containerArray.push(playlist.tracks.items[arr[1]].track.name)
+        containerArray.push(playlist.tracks.items[arr[2]].track.name)
+        containerArray.push(playlist.tracks.items[arr[3]].track.name)
+
+        containerArray.sort(() => Math.random() - 0.5);
+
+        setSong1(containerArray[0])
+        setSong2(containerArray[1])
+        setSong3(containerArray[2])
+        setSong4(containerArray[3])
     }
 
     const checkButton = (title) => {
-        if(title === song1) {
+        if(title === answer) {
             setScore(score+1)
             newSong()
         } else {
@@ -86,33 +133,6 @@ export const Item3 = () => {
         }
     }
 
-    useEffect(() => {
-        let player = document.getElementById('audioPlayer')
-        player.play()
-        player.volume = 0.2
-    },[songUrl]) // <-- here put the parameter to listen
-
-
-    var array = [];
-    const random4 = () => {
-        while(array.length < 4){
-            var r = Math.floor(Math.random() * 4);
-            if(array.indexOf(r) === -1) array.push(r);
-        }
-    }
-
-    const randomize = (item) => {
-        if(item === array[0]) {
-            return song1
-        } else if(item === array[1]) {
-            return song2
-        } else if(item === array[2]) {
-            return song3
-        } else if(item === array[3]) {
-            return song4
-        }
-        random4()
-    }
 
     return(<>
         <Header/>
@@ -127,13 +147,19 @@ export const Item3 = () => {
             </div>
 
             <div>
-                <h1>{song1}</h1>
-                <audio id="audioPlayer" src={songUrl} controls></audio>
+                {/* <h1>{song1}</h1> */}
+                <audio id="audioPlayer" src={songUrl}></audio>
+                <div className="slider">
+                <VolumeDown />
+                    <Slider aria-label="Volume" value={volume} onChange={handleChange}/>
+                <VolumeUp />
+                </div>
             </div>
 
-            <div>
+
+            {/* <div>
                 <button onClick={()=>newSong()} className="refreshButton">Refresh</button>
-            </div>
+            </div> */}
 
             <div className="selectedButtons">
                 <div className="flex">

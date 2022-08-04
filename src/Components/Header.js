@@ -35,15 +35,8 @@ export const Header = () => {
     const logout = () => {
         setToken("")
         window.localStorage.removeItem("token")
-        // const clear = document.getElementById("playlists")
-        // clear.innerHTML = '';
         window.location = "/";
     }
-    // useEffect(() => {
-    //     if(token != "") {
-    //         console.log(token)
-    //     }
-    // },[token])
 
     return(<>
     <header>

@@ -34,6 +34,7 @@ code {
   text-align: center;
   padding: 0.3rem;
   border-radius: 5px;
+  font-size: 1em;
 }
 
 .tab:hover {
@@ -456,6 +457,8 @@ a:active { text-decoration: none; }
   padding: 1rem;
   cursor: pointer;
   border: 3px solid #fff;
+  width: 15em;
+  height: 2em;
   /* flex: 1; */
 }
 
@@ -475,4 +478,14 @@ a:active { text-decoration: none; }
 
 .refreshButton:hover { 
   transform: scale(1.1); 
+}
+
+.slider {
+  display: flex;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.slider > * {
+  margin: 0.5rem;
 }

@@ -62,6 +62,7 @@ export const Item1 = () => {
         })
         // console.log(data.items)
         setUserPlaylists(data.items)
+        console.log(data.items)
         // console.log(data.items.length)
     }
 
@@ -71,8 +72,7 @@ export const Item1 = () => {
                 Authorization: `Bearer ${tempToken}`
             },
             params: {
-                country: "US",
-                locale: "sv_US",
+                country: "US"
             }
         })
         console.log(data.categories.items)
