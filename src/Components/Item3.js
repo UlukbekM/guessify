@@ -32,12 +32,12 @@ export const Item3 = () => {
         setVolume(newValue);
     };
 
-    useEffect(() => {
-        let player = document.getElementById('audioPlayer')
-        // player.currentTime = 0
-        player.play()
-        console.log('change!')
-    },[songUrl]) // <-- here put the parameter to listen
+    // useEffect(() => {
+    //     let player = document.getElementById('audioPlayer')
+    //     // player.currentTime = 0
+    //     player.play()
+    //     console.log('change!')
+    // },[songUrl]) // <-- here put the parameter to listen
 
     useEffect(() => {
         let player = document.getElementById('audioPlayer')
@@ -98,6 +98,8 @@ export const Item3 = () => {
         setSong2(containerArray[1])
         setSong3(containerArray[2])
         setSong4(containerArray[3])
+
+        playAudio(data.tracks.items[arr[0]].track.preview_url)
     }
 
     const newSong = () => {
@@ -121,6 +123,8 @@ export const Item3 = () => {
         setSong2(containerArray[1])
         setSong3(containerArray[2])
         setSong4(containerArray[3])
+
+        playAudio(playlist.tracks.items[arr[0]].track.preview_url)
     }
 
     const checkButton = (title) => {
@@ -131,6 +135,14 @@ export const Item3 = () => {
             setScore(0)
             newSong()
         }
+    }
+
+    const playAudio = (url) => {
+        var player = document.getElementById('audioPlayer')
+        // console.log(player.pause)
+        // player.volume=
+        player.src = url
+        player.play()
     }
 
 
@@ -148,7 +160,7 @@ export const Item3 = () => {
 
             <div>
                 {/* <h1>{song1}</h1> */}
-                <audio id="audioPlayer" src={songUrl}></audio>
+                <audio id="audioPlayer"></audio>
                 <div className="slider">
                 <VolumeDown />
                     <Slider aria-label="Volume" value={volume} onChange={handleChange}/>

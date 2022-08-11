@@ -1,5 +1,7 @@
 import React, { useState, useEffect }  from "react";
 // import { getURL } from "./Item1";
+// import { playAudio, tryAudio, stopAudio} from "./PlaylistPage";
+import {tryAudio, stopAudio} from "./PlaylistPage";
 
 export const Track = (song) => {
     // console.log(song)
@@ -104,9 +106,9 @@ export const Track = (song) => {
     //     }
     // }
 
-    const getURI = () => {
-        console.log(song.track.uri)
-    }
+    // const getURI = () => {
+    //     console.log(song.track.uri)
+    // }
 
     let removedCheck = false
 
@@ -141,7 +143,8 @@ export const Track = (song) => {
                 </div>
                 <div className="playlistTopItem fLarge flex">
                     <div>
-                        <img width={"100rem"} src={imgURL} alt="" className="trackItemPartImages" onClick={()=>getURI()}/>
+                        {/* <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onClick={()=>playAudio(song.track.preview_url)} onMouseOver={()=>tryAudio(song.track.preview_url)}/> */}
+                        <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onMouseOver={()=>tryAudio(song.track.preview_url)}/>
                     </div>
                     <div className="playlistTitle">
                         <div><h3>{song.track.name}</h3></div>

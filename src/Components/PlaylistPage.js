@@ -61,5 +61,38 @@ export const PlaylistPage = () => {
                     <Track key={index} {...track} count={index}/>
             ))}
         </div>
+        <audio id="audioPlayer"></audio>
     </>)
+}
+
+// export const playAudio = (url) => {
+//     var player = document.getElementById('audioPlayer')
+//     player.volume=0.2
+//     // if (player.currentTime > 0 && !player.paused && player.src === url) {
+//     //     console.log('paused')
+//     //     player.pause()
+//     // } else {
+//     //     player.src = url
+//     //     player.play()
+//     // }
+
+//     if(player.src === url) {
+//         console.log('yee')
+//         player.play()
+//     } else {
+//         console.log('nooo')
+//     }
+
+// }
+
+export const tryAudio = (url) => {
+    var player = document.getElementById('audioPlayer')
+    player.volume=0.2
+    player.src = url
+    player.play()
+}
+
+export const stopAudio = () => {
+    var player = document.getElementById('audioPlayer')
+    player.pause()
 }

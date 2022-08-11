@@ -225,6 +225,7 @@ export const Item2 = () => {
                     // : 
                     // {index = index-1}
             ))}
+            <audio id="audioPlayer"></audio>
         </div>
         }
 
@@ -234,3 +235,18 @@ export const Item2 = () => {
 
         </>)
 }
+
+
+
+// export const tryAudio = (url) => {
+//     var player = document.getElementById('audioPlayer')
+//     player.volume=0.2
+//     player.src = url
+//     player.play()
+//     // console.log(url)
+// }
+
+// export const stopAudio = () => {
+//     var player = document.getElementById('audioPlayer')
+//     player.pause()
+// }

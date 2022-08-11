@@ -1,4 +1,5 @@
 import React from "react";
+import {tryAudio, stopAudio} from "./PlaylistPage";
 
 export const TopTracks = (song) => {
     const convertToTime = (duration) => {
@@ -38,7 +39,7 @@ export const TopTracks = (song) => {
             </div> */}
 
             <div className="fSmall">
-                <img src={imgURL} alt="" width={"200px"} height={"200px"}/>
+                <img src={imgURL} alt="" width={"200px"} height={"200px"} className="trackItemPartImages" onMouseOut={()=> stopAudio()} onMouseOver={()=>tryAudio(song.preview_url)}/>
             </div>
 
             <div className="topSongItem fNormal">
