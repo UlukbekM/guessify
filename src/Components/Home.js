@@ -11,7 +11,7 @@ export const RESPONSE_TYPE = 'token'
 export const SCOPE = 'user-top-read streaming user-read-private user-read-email user-modify-playback-state'
 
 export const Home = () => {
-
+//
 
     return (<>
     <Header/>
