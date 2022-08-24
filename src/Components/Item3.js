@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import {fetchData, putData} from './AwsFunctions';
-import * as AWS from 'aws-sdk'
+import AWS from 'aws-sdk'
 
 const docClient = new AWS.DynamoDB.DocumentClient()
 

@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
 import { Header } from "./Header";
 import {fetchData, putData} from './AwsFunctions';
-import * as AWS from 'aws-sdk'
+import AWS from 'aws-sdk'
 
 const docClient = new AWS.DynamoDB.DocumentClient()
 
