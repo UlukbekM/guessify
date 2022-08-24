@@ -220,10 +220,7 @@ export const Item2 = () => {
             
             {tracks.length > 0 &&
                 tracks.map((song,index) => (
-                    // song.name !== "" ? 
-                        <TopTracks key={index} {...song} count={index}/>
-                    // : 
-                    // {index = index-1}
+                    <TopTracks key={index} {...song} count={index}/>
             ))}
             <audio id="audioPlayer"></audio>
         </div>

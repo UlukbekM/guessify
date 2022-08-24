@@ -10,11 +10,19 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import {fetchData, putData} from './AwsFunctions';
+import * as AWS from 'aws-sdk'
+
+const docClient = new AWS.DynamoDB.DocumentClient()
 
 export const Item3 = () => {
     const [token, setToken] = useState("")
     const [score, setScore] = useState(0)
     const [playlist, setPlaylist] = useState("")
+
+    // const [database, setDatabase] = useState("")
+    const [highscore, setHighscore] = useState(0)
+    const [userName, setUserName] = useState("")
 
     const [songUrl, setSongUrl] = useState("")
     const [answer, setAnswer] = useState("")
@@ -32,17 +40,10 @@ export const Item3 = () => {
         setVolume(newValue);
     };
 
-    // useEffect(() => {
-    //     let player = document.getElementById('audioPlayer')
-    //     // player.currentTime = 0
-    //     player.play()
-    //     console.log('change!')
-    // },[songUrl]) // <-- here put the parameter to listen
-
     useEffect(() => {
         let player = document.getElementById('audioPlayer')
         player.volume = volume/100
-        console.log('change!')
+        // console.log('change!')
     },[volume]) // <-- here put the parameter to listen
 
     useEffect(() => {
@@ -57,6 +58,7 @@ export const Item3 = () => {
         }
         setToken(token)
         getPlaylist(token,playlistID)
+        getUser(token)
     }, [])
 
     const getPlaylist = async (tempToken,id) => {
@@ -68,8 +70,19 @@ export const Item3 = () => {
             }
         })
         setPlaylist(data)
-        console.log(data)
+        // console.log(data)
         pickNumber(data)
+        getData('Leaderboard',data.id)
+    }
+
+    const getUser = async (tempToken) => {
+        const {data} = await axios.get("https://api.spotify.com/v1/me", {
+            headers: {
+                Authorization: `Bearer ${tempToken}`
+            }
+        })
+        setUserName(data.display_name)
+        // console.log(data)
     }
 
     let url = ''
@@ -127,14 +140,45 @@ export const Item3 = () => {
         playAudio(playlist.tracks.items[arr[0]].track.preview_url)
     }
 
-    const checkButton = (title) => {
-        if(title === answer) {
-            setScore(score+1)
-            newSong()
+    var canRun = true
+    const toggleCanRun = () => {
+        if(canRun) {
+            canRun = false
         } else {
-            setScore(0)
-            newSong()
+            canRun = true
         }
+    }
+    const checkButton = (title) => {
+        if(canRun === true) {
+            toggleCanRun()
+            const correct = document.getElementById(answer);
+            correct.classList.add("correctSong")
+    
+            if(title === answer) {
+                setScore(score+1)
+                setTimeout(function(){
+                    correct.classList.remove("correctSong")
+                    newSong()
+                }, 2000);
+            } else {
+                const wrong = document.getElementById(title);
+                wrong.classList.add("wrongSong")
+
+                if(highscore === 0) {
+                    addData()
+                }
+
+                setScore(0)
+                setTimeout(function(){
+                    correct.classList.remove("correctSong")
+                    wrong.classList.remove("wrongSong")
+                    newSong()
+                }, 2000);
+            }
+        } else {
+            return
+        }
+
     }
 
     const playAudio = (url) => {
@@ -145,12 +189,44 @@ export const Item3 = () => {
         player.play()
     }
 
+    const getData = (tableName,id) => {
+        var params = {
+            TableName: tableName
+        }
+    
+        docClient.scan(params, function (err, data) {
+            if (!err) {
+                console.log(data)
+                for(var i = 0; i < data.Items.length; i++) {
+                    if(data.Items[i].playlistID === id) {
+                        console.log('same!')
+                        setHighscore(data.Items[i].score)
+                    }
+                }
+            } else {
+                console.log(err)
+            }
+        })
+    }
+
+    const addData = async () => {
+        const userData = {
+            playlistID: playlistID,
+            score: score,
+            userName: userName
+        }
+        
+        await putData('Leaderboard' , userData)
+        getData('Leaderboard', playlistID)
+    }
+
 
     return(<>
         <Header/>
         <div className="selectedContainer">
             <div>
                 <h1>{playlist.name}</h1>
+                <h3>Highscore: {highscore}</h3>
                 <h3>Score: {score}</h3>
             </div>
 
@@ -175,12 +251,20 @@ export const Item3 = () => {
 
             <div className="selectedButtons">
                 <div className="flex">
-                    <button onClick={()=>checkButton(song1)}>{song1}</button>
-                    <button onClick={()=>checkButton(song2)}>{song2}</button>
+                    <div className="" id={song1}>
+                        <button onClick={()=>checkButton(song1)}>{song1}</button>
+                    </div>
+                    <div className="" id={song2}>
+                        <button onClick={()=>checkButton(song2)}>{song2}</button>
+                    </div>
                 </div>
                 <div className="flex">
-                    <button onClick={()=>checkButton(song3)}>{song3}</button>
-                    <button onClick={()=>checkButton(song4)}>{song4}</button>
+                    <div className="" id={song3}>
+                        <button onClick={()=>checkButton(song3)}>{song3}</button>
+                    </div>
+                    <div className="" id={song4}>
+                        <button onClick={()=>checkButton(song4)}>{song4}</button>
+                    </div>
                 </div>
             </div>
         </div>

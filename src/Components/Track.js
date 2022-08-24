@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from "react";
 // import { getURL } from "./Item1";
 // import { playAudio, tryAudio, stopAudio} from "./PlaylistPage";
 import {tryAudio, stopAudio} from "./PlaylistPage";
+import { Link } from "react-router-dom";
 
 export const Track = (song) => {
     // console.log(song)
@@ -110,6 +111,17 @@ export const Track = (song) => {
     //     console.log(song.track.uri)
     // }
 
+    var comma = true
+    const giveComma = () => {
+        if(comma === true) {
+            comma = false
+            return ","
+        } else {
+            comma = true
+            return ""
+        }
+    }
+
     let removedCheck = false
 
     if(song.track.album.name === "") {
@@ -119,49 +131,55 @@ export const Track = (song) => {
     return(<>
         {removedCheck === false ? 
             <div key={song.track.id} className="trackItem">
-            <div className="playlistTop">
-                <div className="playlistTopItem fSmaller">
-                    <p>#</p>
+                <div className="playlistTop">
+                    <div className="playlistTopItem fSmaller">
+                        <p>#</p>
+                    </div>
+                    <div className="playlistTopItem fLarge">
+                        <p>TITLE</p>
+                    </div>
+                    <div className="playlistTopItem fNormal">
+                        <p>ALBUM</p>
+                    </div>
+                    <div className="playlistTopItem fNormal">
+                        <p>DATE ADDED</p>
+                    </div>
+                    <div className="playlistTopItem fNormal">
+                        <p>DURATION</p>
+                    </div>
                 </div>
-                <div className="playlistTopItem fLarge">
-                    <p>TITLE</p>
-                </div>
-                <div className="playlistTopItem fNormal">
-                    <p>ALBUM</p>
-                </div>
-                <div className="playlistTopItem fNormal">
-                    <p>DATE ADDED</p>
-                </div>
-                <div className="playlistTopItem fNormal">
-                    <p>DURATION</p>
-                </div>
-            </div>
 
-            <div className="playlistTop">
-                <div className="playlistTopItem fSmaller">
-                    {song.count+1}
-                </div>
-                <div className="playlistTopItem fLarge flex">
-                    <div>
-                        {/* <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onClick={()=>playAudio(song.track.preview_url)} onMouseOver={()=>tryAudio(song.track.preview_url)}/> */}
-                        <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onMouseOver={()=>tryAudio(song.track.preview_url)}/>
+                <div className="playlistTop">
+                    <div className="playlistTopItem fSmaller">
+                        {song.count+1}
                     </div>
-                    <div className="playlistTitle">
-                        <div><h3>{song.track.name}</h3></div>
-                        <div>{artists}</div>
+                    <div className="playlistTopItem fLarge flex">
+                        <div>
+                            {/* <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onClick={()=>playAudio(song.track.preview_url)} onMouseOver={()=>tryAudio(song.track.preview_url)}/> */}
+                            <img width={"100rem"} src={imgURL} alt="" onMouseOut={()=> stopAudio()} className="trackItemPartImages" onMouseOver={()=>tryAudio(song.track.preview_url)}/>
+                        </div>
+                        <div className="playlistTitle">
+                            <div><h3>{song.track.name}</h3></div>
+                            <div>
+                                {/* <Link to={`/artist`} state={{artistID: song.track.artists[0].id}}>{artists}</Link> */}
+                                {song.track.artists.length > 0 &&
+                                    song.track.artists.map((artist,index) => (
+                                        <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }}> {artist.name} </Link>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="playlistTopItem fNormal">
-                    {song.track.album.name}
-                </div>
-                <div className="playlistTopItem fNormal">
-                    {findDifference(song.added_at)}
-                </div>
-                <div className="playlistTopItem fNormal">
-                    {convertToTime(song.track.duration_ms)}
+                    <div className="playlistTopItem fNormal">
+                        {song.track.album.name}
+                    </div>
+                    <div className="playlistTopItem fNormal">
+                        {findDifference(song.added_at)}
+                    </div>
+                    <div className="playlistTopItem fNormal">
+                        {convertToTime(song.track.duration_ms)}
+                    </div>
                 </div>
             </div>
-        </div>
         : 
         <>
         </>

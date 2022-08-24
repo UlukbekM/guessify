@@ -63,7 +63,7 @@ export const Header = () => {
                 </Grid>
                 </>: 
                 <>
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <div></div>
                     </Grid>
                         <Grid item xs={1}>
@@ -76,11 +76,11 @@ export const Header = () => {
                             <div className="tab noselect">Item 2</div>
                         </Link>
                     </Grid>
-                    {/* <Grid item xs={1}>
-                        <Link to="/item3">
-                            <div className="tab noselect">Item 3</div>
+                    <Grid item xs={1}>
+                        <Link to="/testing">
+                            <div className="tab noselect">Testing</div>
                         </Link>
-                    </Grid> */}
+                    </Grid>
                     <Grid item xs={1}>
                     {!token ?
                     <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
@@ -92,6 +92,24 @@ export const Header = () => {
                     </Grid></>}
             </Grid>
         </Box>
+
+
+    {/* <div className="header">
+        <div className="headerItem noselect">
+            Spotify App
+        </div>
+        <div className="headerComponents">
+            <div className="headerItem noselect">
+                Item 1
+            </div>
+            <div className="headerItem noselect">
+                Item 2
+            </div>
+            <div className="headerItem noselect">
+                Login/Logout
+            </div>
+        </div>
+    </div> */}
     </header>
     </>)
 }

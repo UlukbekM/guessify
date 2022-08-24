@@ -5,6 +5,8 @@ import {Item2} from './Components/Item2'
 import {Item3} from './Components/Item3'
 import { CategoryPage } from './Components/CategoryPage';
 import { PlaylistPage } from './Components/PlaylistPage';
+import { Artist } from './Components/Artist';
+import { Testing } from './Components/Testing';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="item3" element={<Item3 />} />
         <Route path="playlist" element={<PlaylistPage />} />
         <Route path="categories" element={<CategoryPage />} />
+        <Route path="artist" element={<Artist />} />
+        <Route path="testing" element={<Testing />} />
       </Routes>
     </BrowserRouter>
   );

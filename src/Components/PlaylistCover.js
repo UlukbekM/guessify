@@ -33,7 +33,7 @@ export const PlaylistCover = (playlist) => {
                 <div className="playlistCoverItem">{owner} • {total + " songs"}</div>
             </div>
             <div className="playlistButton">
-                <Link to={`/item3`} state={{ playlistID: playlist.id }}><button className="topButton">Select Playlist</button></Link>
+                <Link to={`/item3`} state={{ playlistID: playlist.id }} style={{ textDecoration: 'none' }}><button className="topButton">Select Playlist</button></Link>
             </div>
         </div>
     </>)

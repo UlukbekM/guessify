@@ -62,7 +62,7 @@ export const Item1 = () => {
         })
         // console.log(data.items)
         setUserPlaylists(data.items)
-        console.log(data.items)
+        // console.log(data.items)
         // console.log(data.items.length)
     }
 
@@ -75,7 +75,7 @@ export const Item1 = () => {
                 country: "US"
             }
         })
-        console.log(data.categories.items)
+        // console.log(data.categories.items)
         setCategories(data.categories.items)
     }
 

@@ -20,9 +20,41 @@ p {
   margin: 0;
 }
 
+h4 {
+  font-weight: 100;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  background-color: #083a1a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerItem {
+  margin: 1rem;
+  background-color: #181818;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  /* margin: 1%; */
+  /* padding: 1%; */
+  font-size: 2ex;
+}
+
+.headerComponents {
+  display: flex;
+}
+
+.headerItem:hover {
+  background-color: #fff;
+  color: #181818;
+  border: 2px solid #181818;
+  cursor: pointer;
 }
 
 .tab {
@@ -82,6 +114,7 @@ a:active { text-decoration: none; }
 
 .playlistItem img {
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .playlistItem p {
@@ -150,6 +183,10 @@ a:active { text-decoration: none; }
   color: #ffffff;
   align-items: center;
   margin: 1rem;
+}
+
+.playlistCoverContainer img {
+  border-radius: 5px;
 }
 
 .playlistCoverTitle {
@@ -246,6 +283,10 @@ a:active { text-decoration: none; }
   color: #fff;
   margin: 0.1rem;
   border-radius: 5px;
+}
+
+.topContainer > * {
+  text-align: left;
 }
 
 .tA img{
@@ -349,7 +390,7 @@ a:active { text-decoration: none; }
 
 .topSongItem {
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   display: flex;
 }
 
@@ -359,12 +400,12 @@ a:active { text-decoration: none; }
 
 .fSmall {
   flex: 0.5;
-  margin: 0;
+  /* margin: 0; */
 }
 
 .fNormal {
   flex: 1;
-  margin: 0;
+  /* margin: 0; */
 }
 
 .fLarge {
@@ -461,6 +502,9 @@ a:active { text-decoration: none; }
   width: 15em;
   height: 2em;
   /* flex: 1; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .selectedButtons button:hover {
@@ -489,4 +533,71 @@ a:active { text-decoration: none; }
 
 .slider > * {
   margin: 0.5rem;
+}
+
+.artistContainer {
+  background-color: #181818;
+  margin: 2rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.artistCover {
+  display: flex;
+  margin: 1rem;
+}
+
+.artistItem {
+  padding: 1rem;
+}
+
+.artistPopularity {
+  background-color: #168b3f;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: larger;
+}
+
+.albumContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.albumItem {
+  flex: 1;
+  display: grid;
+  background-color: #282828;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  max-width: 200px;
+  max-height: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+.albumItem:hover {
+  background-color: #202020;
+  cursor: pointer;
+}
+
+.albumItem h4 {
+  margin: 0.5rem;
+}
+
+.albumItem img {
+  border-radius: 5px;
+}
+
+.correctSong button{
+  background-color: #168b3f;
+}
+
+.wrongSong button{
+  background-color: rgb(175, 15, 15);
 }

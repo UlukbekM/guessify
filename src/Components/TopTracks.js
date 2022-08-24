@@ -1,5 +1,6 @@
 import React from "react";
 import {tryAudio, stopAudio} from "./PlaylistPage";
+import { Link } from "react-router-dom";
 
 export const TopTracks = (song) => {
     const convertToTime = (duration) => {
@@ -47,7 +48,11 @@ export const TopTracks = (song) => {
             </div>
 
             <div className="topSongItem fNormal">
-                <p>{song.artists[0].name}</p>
+                {/* <p>{song.artists[0].name}</p> */}
+                {song.artists.length > 0 &&
+                    song.artists.map((artist,index) => (
+                        <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }}> {artist.name} &nbsp;  </Link>
+                ))}
             </div>
 
             <div className="topSongItem fNormal">
