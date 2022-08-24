@@ -164,7 +164,7 @@ export const Item3 = () => {
                 const wrong = document.getElementById(title);
                 wrong.classList.add("wrongSong")
 
-                if(highscore === 0) {
+                if(highscore === 0 && score > 0) {
                     addData()
                 }
 
