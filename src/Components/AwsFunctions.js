@@ -38,3 +38,15 @@ export const putData = (tableName , data) => {
         }
     })
 }
+
+export const updateData = (tableName, data) => {
+    var params = {
+        TableName: tableName,
+        Item: data
+    }
+    
+    docClient.update(params, function(err, data) {
+        if (err) console.log(err);
+        else console.log(data);
+    });
+}
