@@ -10,10 +10,10 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-// import {fetchData, putData} from './AwsFunctions';
-// import AWS from 'aws-sdk'
+import {fetchData, putData} from './AwsFunctions';
+import AWS from 'aws-sdk'
 
-// const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new AWS.DynamoDB.DocumentClient()
 
 export const Item3 = () => {
     const [token, setToken] = useState("")
@@ -72,7 +72,7 @@ export const Item3 = () => {
         setPlaylist(data)
         // console.log(data)
         pickNumber(data)
-        // getData('Leaderboard',data.id)
+        getData('Leaderboard',data.id)
     }
 
     const getUser = async (tempToken) => {
@@ -164,9 +164,9 @@ export const Item3 = () => {
                 const wrong = document.getElementById(title);
                 wrong.classList.add("wrongSong")
 
-                // if(highscore === 0 && score > 0) {
-                //     addData()
-                // }
+                if(highscore === 0 && score > 0) {
+                    addData()
+                }
 
                 setScore(0)
                 setTimeout(function(){
@@ -189,36 +189,37 @@ export const Item3 = () => {
         player.play()
     }
 
-    // const getData = (tableName,id) => {
-    //     var params = {
-    //         TableName: tableName
-    //     }
+    const getData = (tableName,id) => {
+        var params = {
+            TableName: tableName
+        }
     
-    //     docClient.scan(params, function (err, data) {
-    //         if (!err) {
-    //             console.log(data)
-    //             for(var i = 0; i < data.Items.length; i++) {
-    //                 if(data.Items[i].playlistID === id) {
-    //                     console.log('same!')
-    //                     setHighscore(data.Items[i].score)
-    //                 }
-    //             }
-    //         } else {
-    //             console.log(err)
-    //         }
-    //     })
-    // }
+        docClient.scan(params, function (err, data) {
+            if (!err) {
+                console.log(data)
+                for(var i = 0; i < data.Items.length; i++) {
+                    if(data.Items[i].playlistID === id) {
+                        console.log('same!')
+                        setHighscore(data.Items[i].score)
+                    }
+                }
+            } else {
+                console.log(err)
+            }
+        })
+    }
 
-    // const addData = async () => {
-    //     const userData = {
-    //         playlistID: playlistID,
-    //         score: score,
-    //         userName: userName
-    //     }
+    const addData = async () => {
+        const userData = {
+            playlistID: playlistID,
+            score: score,
+            userName: userName
+        }
         
-    //     await putData('Leaderboard' , userData)
-    //     getData('Leaderboard', playlistID)
-    // }
+        await putData('Leaderboard' , userData)
+        // getData('Leaderboard', playlistID)
+        setHighscore(score)
+    }
 
 
     return(<>
