@@ -1,9 +1,9 @@
 import React,{useState, useEffect} from "react";
 import { Header } from "./Header";
-// import {fetchData, putData} from './AwsFunctions';
-// import AWS from 'aws-sdk'
+import {fetchData, putData, updateData} from './AwsFunctions';
+import AWS from 'aws-sdk'
 
-// const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new AWS.DynamoDB.DocumentClient()
 
 export const Testing = () => {
 
@@ -47,9 +47,16 @@ export const Testing = () => {
     //     console.log(item)
     // }, [item])
 
+    const updateData = async () => {
+        await updateData('Leaderboard' , '37i9dQZF1DXcBWIGoYBM5M', 4, 'ulu')
+        // getData('Leaderboard', playlistID)
+        // setHighscore(score)
+    }
+
     return(<>
         <Header/>
-        {/* <button onClick={() => fetchDataFromDynamoDb()}> Fetch </button>
-        <button onClick={() => addDataToDynamoDB()}> Put </button> */}
+        {/* <button onClick={() => fetchDataFromDynamoDb()}> Fetch </button> */}
+        {/* <button onClick={() => addDataToDynamoDB()}> Put </button> */}
+        <button onClick={() => updateData()}> Update </button>
     </>)
 }

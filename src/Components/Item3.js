@@ -225,13 +225,7 @@ export const Item3 = () => {
     }
 
     const updateData = async () => {
-        const userData = {
-            playlistID: playlistID,
-            score: score,
-            userName: userName
-        }
-        
-        await updateData('Leaderboard' , userData)
+        await updateData('Leaderboard' , playlistID, score, userName)
         // getData('Leaderboard', playlistID)
         setHighscore(score)
     }
