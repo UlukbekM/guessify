@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { Header } from "./Header";
-import {fetchData, putData, updateData} from './AwsFunctions';
+import {fetchData, putData, updateItem} from './AwsFunctions';
 import AWS from 'aws-sdk'
 
 const docClient = new AWS.DynamoDB.DocumentClient()
@@ -48,9 +48,12 @@ export const Testing = () => {
     // }, [item])
 
     const updateData = async () => {
-        await updateData('Leaderboard' , '37i9dQZF1DXcBWIGoYBM5M', 4, 'ulu')
-        // getData('Leaderboard', playlistID)
-        // setHighscore(score)
+        const userData = {
+            playlistID:"37i9dQZF1DX0XUsuxWHRQd",
+            score: 11,
+            userName: "uluuuuu"
+        }
+        await updateItem(userData)
     }
 
     return(<>

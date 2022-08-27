@@ -39,19 +39,19 @@ export const putData = (tableName , data) => {
     })
 }
 
-export const updateData = (tableName, playlist, score, user) => {
-    var params = {
-        TableName:"Leaderboard",
-        Key: {
-            playlistID : playlist
-        },
-        UpdateExpression: "set score = :score",
-            ExpressionAttributeValues:{
-                ":score":score
-            },
-            ReturnValues:"UPDATED_NEW"
-        };
-    
+export const updateItem = (updatedItem) => {
+    const params = {
+    TableName: 'Leaderboard',
+    Key: {
+        playlistID: updatedItem.playlistID,
+    },
+    UpdateExpression: 'set userName = :r, score = :d',
+    ExpressionAttributeValues: {
+        ':r': updatedItem.userName,
+        ':d': updatedItem.score
+    },
+    };
+
     docClient.update(params, function(err, data) {
         if (err) console.log(err);
         else console.log(data);

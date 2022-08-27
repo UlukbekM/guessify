@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import {fetchData, putData, updateData} from './AwsFunctions';
+import {fetchData, putData, updateItem} from './AwsFunctions';
 import AWS from 'aws-sdk'
 
 const docClient = new AWS.DynamoDB.DocumentClient()
@@ -167,8 +167,8 @@ export const Item3 = () => {
                 if(highscore === 0 && score > 0) {
                     addData()
                 } else if (highscore > 0 && score > highscore) {
-                    console.log('update database')
-                    // updateData()
+                    // console.log('update database')
+                    updateData()
                 }
 
                 setScore(0)
@@ -225,7 +225,12 @@ export const Item3 = () => {
     }
 
     const updateData = async () => {
-        await updateData('Leaderboard' , playlistID, score, userName)
+        const userData = {
+            playlistID: playlistID,
+            score: score,
+            userName: userName
+        }
+        await updateItem(userData)
         // getData('Leaderboard', playlistID)
         setHighscore(score)
     }
