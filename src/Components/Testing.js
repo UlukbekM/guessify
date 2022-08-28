@@ -47,19 +47,19 @@ export const Testing = () => {
     //     console.log(item)
     // }, [item])
 
-    const updateData = async () => {
-        const userData = {
-            playlistID:"37i9dQZF1DX0XUsuxWHRQd",
-            score: 11,
-            userName: "uluuuuu"
-        }
-        await updateItem(userData)
-    }
+    // const updateData = async () => {
+    //     const userData = {
+    //         playlistID:"37i9dQZF1DX0XUsuxWHRQd",
+    //         score: 11,
+    //         userName: "uluuuuu"
+    //     }
+    //     await updateItem(userData)
+    // }
 
     return(<>
         <Header/>
         {/* <button onClick={() => fetchDataFromDynamoDb()}> Fetch </button> */}
         {/* <button onClick={() => addDataToDynamoDB()}> Put </button> */}
-        <button onClick={() => updateData()}> Update </button>
+        {/* <button onClick={() => updateData()}> Update </button> */}
     </>)
 }
