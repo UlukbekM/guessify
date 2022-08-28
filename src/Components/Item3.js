@@ -22,6 +22,7 @@ export const Item3 = () => {
 
     // const [database, setDatabase] = useState("")
     const [highscore, setHighscore] = useState(0)
+    const [highscoreName, setHighscoreName] = useState("")
     const [userName, setUserName] = useState("")
 
     const [songUrl, setSongUrl] = useState("")
@@ -199,11 +200,12 @@ export const Item3 = () => {
     
         docClient.scan(params, function (err, data) {
             if (!err) {
-                console.log(data)
+                // console.log(data)
                 for(var i = 0; i < data.Items.length; i++) {
                     if(data.Items[i].playlistID === id) {
-                        console.log('same!')
+                        // console.log(data.Items[i].userName)
                         setHighscore(data.Items[i].score)
+                        setHighscoreName(data.Items[i].userName)
                     }
                 }
             } else {
@@ -242,7 +244,10 @@ export const Item3 = () => {
         <div className="selectedContainer">
             <div>
                 <h1>{playlist.name}</h1>
-                <h3>Highscore: {highscore}</h3>
+                <h3>Highscore: {highscore} 
+                    {highscoreName !== "" ? " -"+ `${highscoreName}`
+                    : <></>}
+                </h3>
                 <h3>Score: {score}</h3>
             </div>
 
