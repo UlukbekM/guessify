@@ -235,6 +235,7 @@ export const Item3 = () => {
         await updateItem(userData)
         // getData('Leaderboard', playlistID)
         setHighscore(score)
+        setHighscoreName(userName)
     }
 
 
