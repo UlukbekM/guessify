@@ -7,6 +7,7 @@ import { CategoryPage } from './Components/CategoryPage';
 import { PlaylistPage } from './Components/PlaylistPage';
 import { Artist } from './Components/Artist';
 import { Testing } from './Components/Testing';
+import { SearchPage } from './Components/SearchPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="categories" element={<CategoryPage />} />
         <Route path="artist" element={<Artist />} />
         <Route path="testing" element={<Testing />} />
+        <Route path="search" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );

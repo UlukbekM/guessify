@@ -601,3 +601,30 @@ a:active { text-decoration: none; }
 .wrongSong button{
   background-color: rgb(175, 15, 15);
 }
+
+.playImage img{
+  border-radius: 5px;
+}
+
+.searchBar {
+  width: 8rem;
+}
+
+.searchBarForm {
+  text-align: center;
+  display: block;
+  justify-content: center;
+}
+
+.searchPageForm {
+  text-align: center;
+  margin: 2rem;
+}
+
+.searchPageBar {
+  width: 30em;
+  height: 3vh;
+  
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 4px;
+}

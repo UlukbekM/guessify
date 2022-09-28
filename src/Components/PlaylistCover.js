@@ -25,7 +25,7 @@ export const PlaylistCover = (playlist) => {
 
     return(<>
         <div className="playlistCoverContainer">
-            <div><img width={"200rem"} src={url} alt=""/></div>
+            <div><img width={"200rem"} height={"200rem"}src={url} alt=""/></div>
             <div className="playlistCoverTitle">
                 <div className="playlistCoverItem">PLAYLIST</div>
                 <div className="playlistCoverItem">{playlist.description}</div>

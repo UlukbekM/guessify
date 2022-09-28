@@ -5,7 +5,11 @@ import {tryAudio, stopAudio} from "./PlaylistPage";
 import { Link } from "react-router-dom";
 
 export const Track = (song) => {
-    // console.log(song)
+    let removedCheck = false
+    if(song.track === null) {
+        removedCheck = true
+        console.log(song)
+    }
     const findDifference = (time) => {
         var currenttime  =  new Date().toISOString();
         var d1 = new Date(time)
@@ -79,22 +83,23 @@ export const Track = (song) => {
 
     let artists = ''
 
-    if(song.track.album.artists.length === 1) {
-        artists = song.track.album.artists[0].name
-    } else {
-        song.track.album.artists.forEach((x, i) => {
-            if(i === 0) {
-                artists = x.name
-            } else {
-                artists += ", " + x.name
-            }
-        });
-    }
-
     let imgURL = ''
-    if(song.track.album.images.length > 0) {
-        imgURL = song.track.album.images[0].url
-        // console.log(song.track.album.images)
+    if(song.track !== null) {
+        if(song.track.album.artists.length === 1) {
+            artists = song.track.album.artists[0].name
+        } else {
+            song.track.album.artists.forEach((x, i) => {
+                if(i === 0) {
+                    artists = x.name
+                } else {
+                    artists += ", " + x.name
+                }
+            });
+        }
+
+        if(song.track.album.images.length > 0) {
+            imgURL = song.track.album.images[0].url
+        }
     }
 
     // const removedCheck = (code) => {
@@ -122,11 +127,13 @@ export const Track = (song) => {
         }
     }
 
-    let removedCheck = false
 
-    if(song.track.album.name === "") {
+    if(song.track !== null && song.track.album.name === "") {
         removedCheck = true
     }
+    // if(song.track.album.name === "") {
+    //     removedCheck = true
+    // }
 
     return(<>
         {removedCheck === false ? 

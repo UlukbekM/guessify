@@ -93,26 +93,30 @@ export const Item3 = () => {
 
     const pickNumber = (data) => {
         var arr = [];
+        let totalSongs = data.tracks.total
+        if(totalSongs > 100) totalSongs = 100
         while(arr.length < 4){
-            var r = Math.floor(Math.random() * data.tracks.total);
-            if(arr.indexOf(r) === -1) arr.push(r);
+            var r = Math.floor(Math.random() * totalSongs);
+            if(arr.indexOf(r) === -1 && data.tracks.items[r] !== undefined) 
+            arr.push(r);
         }
         setSongUrl(data.tracks.items[arr[0]].track.preview_url)
         setAnswer(data.tracks.items[arr[0]].track.name)
 
         var containerArray = []
-        containerArray.push(data.tracks.items[arr[0]].track.name)
-        containerArray.push(data.tracks.items[arr[1]].track.name)
-        containerArray.push(data.tracks.items[arr[2]].track.name)
-        containerArray.push(data.tracks.items[arr[3]].track.name)
+        for(let i = 0; i < arr.length; i++) {
+            containerArray.push(data.tracks.items[arr[i]].track.name)
+        }
 
         containerArray.sort(() => Math.random() - 0.5);
-
+        
+        
         setSong1(containerArray[0])
         setSong2(containerArray[1])
         setSong3(containerArray[2])
         setSong4(containerArray[3])
 
+        // console.log(data.tracks.items[arr[0]].track.preview_url)
         playAudio(data.tracks.items[arr[0]].track.preview_url)
     }
 
@@ -120,16 +124,16 @@ export const Item3 = () => {
         var arr = [];
         while(arr.length < 4){
             var r = Math.floor(Math.random() * playlist.tracks.total);
-            if(arr.indexOf(r) === -1) arr.push(r);
+            if(arr.indexOf(r) === -1 && playlist.tracks.items[r] !== undefined && playlist.tracks.items[r].track.preview_url !== null) 
+                arr.push(r);
         }
         setSongUrl(playlist.tracks.items[arr[0]].track.preview_url)
         setAnswer(playlist.tracks.items[arr[0]].track.name)
         
         var containerArray = []
-        containerArray.push(playlist.tracks.items[arr[0]].track.name)
-        containerArray.push(playlist.tracks.items[arr[1]].track.name)
-        containerArray.push(playlist.tracks.items[arr[2]].track.name)
-        containerArray.push(playlist.tracks.items[arr[3]].track.name)
+        for(let i = 0; i < arr.length; i++) {
+            containerArray.push(playlist.tracks.items[arr[i]].track.name)
+        }
 
         containerArray.sort(() => Math.random() - 0.5);
 
@@ -138,6 +142,7 @@ export const Item3 = () => {
         setSong3(containerArray[2])
         setSong4(containerArray[3])
 
+        // console.log(playlist.tracks.items[arr[0]].track.preview_url)
         playAudio(playlist.tracks.items[arr[0]].track.preview_url)
     }
 
@@ -252,7 +257,7 @@ export const Item3 = () => {
                 <h3>Score: {score}</h3>
             </div>
 
-            <div>
+            <div className="playImage">
                 <img width={"250rem"} src={url} alt=""/>
             </div>
 
