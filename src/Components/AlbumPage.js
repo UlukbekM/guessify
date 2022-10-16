@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import { Header } from "./Header";
 import { useLocation } from 'react-router-dom'
-import { Track } from "./Track"
-import { PlaylistCover } from "./PlaylistCover";
+import { AlbumCover } from "./AlbumCover";
+import { AlbumTrack } from "./AlbumTrack";
 import Skeleton from '@mui/material/Skeleton';
+import axios from 'axios';
 
-export const PlaylistPage = () => {
+export const AlbumPage = () => {
     const [token, setToken] = useState("")
+    const [album, setAlbum] = useState([])
     const [tracks, setTracks] = useState("")
-    const [playlist, setPlaylist] = useState("")
 
     const location = useLocation()
-    const { playlistID } = location.state
+    const { albumID } = location.state
 
     useEffect(() => {
         const hash = window.location.hash
@@ -25,40 +25,42 @@ export const PlaylistPage = () => {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
-        getTracks(token,playlistID)
-        getPlaylist(token,playlistID)
+        getAlbum(token, albumID)
+        // getTracks(token, albumID)
     }, [])
 
-    const getTracks = async (tempToken,id) => {
-        const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+    const getAlbum = async (tempToken,id) => {
+        const {data} = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
             headers: {
                 Authorization: `Bearer ${tempToken}`
             },
             params: {
+                id: id
             }
         })
-        setTracks(data.items)
-        // console.log(data.items)
-    }
-
-    const getPlaylist = async (tempToken,id) => {
-        const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${id}`, {
-            headers: {
-                Authorization: `Bearer ${tempToken}`
-            },
-            params: {
-            }
-        })
-        setPlaylist(data)
         // console.log(data)
+        setAlbum(data)
+        setTracks(data.tracks.items)
     }
 
+    // const getTracks = async (tempToken,id) => {
+    //     const {data} = await axios.get(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+    //         headers: {
+    //             Authorization: `Bearer ${tempToken}`
+    //         },
+    //         params: {
+    //             id: id
+    //         }
+    //     })
+    //     setTracks(data.items)
+    //     // console.log(data.items)
+    // }
+    
     return(<>
         <Header/>
         <div className="trackContainer">
-
-        <PlaylistCover key={playlistID} {...playlist}/>
-            { playlist ? (
+            <AlbumCover key={albumID} {...album}/>
+            { album ? (
                 <>
                 </>
             ) : (<>
@@ -74,41 +76,27 @@ export const PlaylistPage = () => {
                     sx={{ marginLeft: 2, marginRight: 2, marginTop: 2 }}/>
                 </>
             )}
-            
             {tracks.length > 0 &&
                 tracks.map((track,index) => (
-                    <Track key={index} {...track} count={index}/>
+                    <AlbumTrack key={index} {...track} count={index} imgurl={album.images[1].url}/>
             ))}
+
+            
+
         </div>
         <audio id="audioPlayer"></audio>
     </>)
 }
 
-// export const playAudio = (url) => {
-//     var player = document.getElementById('audioPlayer')
-//     player.volume=0.2
-//     // if (player.currentTime > 0 && !player.paused && player.src === url) {
-//     //     console.log('paused')
-//     //     player.pause()
-//     // } else {
-//     //     player.src = url
-//     //     player.play()
-//     // }
 
-//     if(player.src === url) {
-//         console.log('yee')
-//         player.play()
-//     } else {
-//         console.log('nooo')
-//     }
-
-// }
 
 export const tryAudio = (url) => {
-    var player = document.getElementById('audioPlayer')
-    player.volume=0.2
-    player.src = url
-    player.play()
+    if(url !== null) {
+        var player = document.getElementById('audioPlayer')
+        player.volume=0.2
+        player.src = url
+        player.play()
+    }
 }
 
 export const stopAudio = () => {

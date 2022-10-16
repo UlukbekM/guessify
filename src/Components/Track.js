@@ -3,8 +3,10 @@ import React, { useState, useEffect }  from "react";
 // import { playAudio, tryAudio, stopAudio} from "./PlaylistPage";
 import {tryAudio, stopAudio} from "./PlaylistPage";
 import { Link } from "react-router-dom";
+import ExplicitIcon from '@mui/icons-material/Explicit';
 
 export const Track = (song) => {
+    // console.log(song)
     let removedCheck = false
     if(song.track === null) {
         removedCheck = true
@@ -135,6 +137,8 @@ export const Track = (song) => {
     //     removedCheck = true
     // }
 
+    
+
     return(<>
         {removedCheck === false ? 
             <div key={song.track.id} className="trackItem">
@@ -167,11 +171,17 @@ export const Track = (song) => {
                         </div>
                         <div className="playlistTitle">
                             <div><h3>{song.track.name}</h3></div>
-                            <div>
+                            <div className="albumArtist">
+                                {song.track.explicit ? <ExplicitIcon  className="artistIcon"/> :<></> }
                                 {/* <Link to={`/artist`} state={{artistID: song.track.artists[0].id}}>{artists}</Link> */}
                                 {song.track.artists.length > 0 &&
                                     song.track.artists.map((artist,index) => (
-                                        <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }}> {artist.name} </Link>
+                                        <>
+                                            { (!index ? " ": ',')}
+                                            <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }}> 
+                                                {artist.name} 
+                                            </Link>
+                                        </>
                                 ))}
                             </div>
                         </div>

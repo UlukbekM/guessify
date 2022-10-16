@@ -4,37 +4,49 @@ import { Header } from "./Header";
 import { useLocation } from 'react-router-dom'
 import { Album } from "./Album";
 import { TopTracks } from "./TopTracks"
+import { artistChange } from "./TopTracks";
 
 export const Artist = () => {
     const [token, setToken] = useState("")
     const [tracks, setTracks] = useState("")
     const [artist, setArtist] = useState("")
     const [albums, setAlbums] = useState("")
+    const [newAlbums, setNewAlbums] = useState("")
     // const [playlists, setPlaylists] = useState("")
 
     const location = useLocation()
     const { artistID } = location.state
 
     useEffect(() => {
+        newArtist()
+    }, [artistChange])
+
+    const newArtist = () => {
+        if(artistChange !== "") {
+            getArtist(token,artistChange)
+            getArtistAlbums(token,artistChange)
+            getArtistTracks(token,artistChange)
+        }
+    }
+
+    useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
-
         if (!token && hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-
             window.location.hash = ""
             window.localStorage.setItem("token", token)
         }
         setToken(token)
-        getArtist(token)
-        getArtistAlbums(token)
-        getArtistTracks(token)
+        getArtist(token,artistID)
+        getArtistAlbums(token,artistID)
+        getArtistTracks(token,artistID)
         // getArtistPlaylists(token)
     }, [])
 
 
-    const getArtist = async (tempToken) => {
-        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}`, {
+    const getArtist = async (tempToken,artist) => {
+        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artist}`, {
             headers: {
                 Authorization: `Bearer ${tempToken}`
             }
@@ -43,21 +55,37 @@ export const Artist = () => {
         // console.log(data)
     }
 
-    const getArtistAlbums = async (tempToken) => {
-        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}/albums`, {
+    const getArtistAlbums = async (tempToken,artist) => {
+        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artist}/albums`, {
             headers: {
                 Authorization: `Bearer ${tempToken}`
             },
             params: {
                 include_groups: "album",
-                limit: 25
+                limit: 50
             }
         })
+        // console.log(data)
         setAlbums(data.items)
+        getUniqueAlbums(data.items)
     }
 
-    const getArtistTracks = async (tempToken) => {
-        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}/top-tracks`, {
+    const getUniqueAlbums = (items) => {
+        const unique = [...new Set(items.map(item => item.name))];
+
+        let temp = []
+
+        for(let i = 0; i < items.length; i++) {
+            if(unique.includes(items[i].name)) {
+                temp.push(items[i])
+                unique.splice(unique.indexOf(items[i].name),1)
+            }
+        }
+        setAlbums(temp)
+    }
+
+    const getArtistTracks = async (tempToken,artist) => {
+        const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artist}/top-tracks`, {
             headers: {
                 Authorization: `Bearer ${tempToken}`
             },
@@ -99,9 +127,11 @@ export const Artist = () => {
         followers = artist.followers.total.toLocaleString()
     }
 
+
     return(<>
     <Header/>
 
+    <div className="headerSpace"/>
     <div className="artistContainer">
         <div className="artistCover">
             <div className="artistItem">
@@ -123,11 +153,11 @@ export const Artist = () => {
             <h2>Top Tracks</h2>
             <div className="topContainer">
                 {/* <div className="fSmall"><p>#</p></div> */}
-                <div className="fSmall"><p></p></div>
-                <div className="fNormal"><p>TITLE</p></div>
-                <div className="fNormal"><p>ARTIST</p></div>
-                <div className="fNormal"><p>ALBUM</p></div>
-                <div className="fNormal"><p>DURATION</p></div>
+                <div className="fSmall topBarItemCenter"><p></p></div>
+                <div className="fNormal topBarItemLeft"><p>TITLE</p></div>
+                <div className="fNormal topBarItemLeft"><p>ARTIST</p></div>
+                <div className="fNormal topBarItemCenter"><p>ALBUM</p></div>
+                <div className="fNormal topBarItemCenter"><p>DURATION</p></div>
             </div>
             {tracks.length > 0 &&
                 tracks.map((track,index) => (

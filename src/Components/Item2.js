@@ -173,10 +173,12 @@ export const Item2 = () => {
 
     return(<>
         <Header/>
-
+        <div className="headerSpace"/>
         <div className="topOptions">
             <div className="topOptionsItem">
-                <img src={userProfile} alt="" width={"200px"} height={"200px"}/>
+                <div className="imageBorder">
+                    <img src={userProfile} alt="" width={"200px"} height={"200px"}/>
+                </div>
                 <p className="f3">{userDATA.display_name}'s {returnCurrent()}</p> 
             </div>
             <div>
@@ -210,11 +212,11 @@ export const Item2 = () => {
             </div>
             <div className="topContainer">
                 {/* <div className="fSmall"><p>#</p></div> */}
-                <div className="fSmall"><p></p></div>
-                <div className="fNormal"><p>TITLE</p></div>
-                <div className="fNormal"><p>ARTIST</p></div>
-                <div className="fNormal"><p>ALBUM</p></div>
-                <div className="fNormal"><p>DURATION</p></div>
+                <div className="fSmall topBarItemCenter"><p></p></div>
+                <div className="fNormal topBarItemLeft"><p>TITLE</p></div>
+                <div className="fNormal topBarItemLeft"><p>ARTIST</p></div>
+                <div className="fNormal topBarItemCenter"><p>ALBUM</p></div>
+                <div className="fNormal topBarItemCenter"><p>DURATION</p></div>
             </div>
 
             

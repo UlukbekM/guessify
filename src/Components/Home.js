@@ -3,18 +3,43 @@ import { Header } from "./Header";
 // https://www.youtube.com/watch?v=wBq3HCvYfUg
 //https://discoverquickly.com/
 
-export const CLIENT_ID = 'a36fba8567644702b88f6cab02ecfffa'
-// export const REDIRECT_URI = 'http://localhost:3000'
-// export const REDIRECT_URI = 'https://spotify-app-ulukbek.herokuapp.com'
-export const REDIRECT_URI = 'https://spotify-app-inky.vercel.app/'
-export const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
-export const RESPONSE_TYPE = 'token'
-export const SCOPE = 'user-top-read user-read-private user-read-email'
-
 export const Home = () => {
-//
 
     return (<>
-    <Header/>
+        <Header/>
+        <div className="homeContainer">
+            <div className="homeLanding">
+                <div className="homeLandingLeft">
+                    <h1 className="textLoad">Guessify</h1>
+                    <h2 className="textLoad">The Spotify Song Guessing Game.</h2>
+                    <h4 className="textLoad">Test how well you know your music and compete against others.</h4>
+                    <h4 className="textLoad">Choose from a selection of hundrends of playlists.</h4>
+                    <h4 className="textLoad">Check your top artists and tracks.</h4>
+                </div>
+                <div className="homeLandingRight">
+                    <div className="homeImageAnimation">
+                        <img src="https://i.imgur.com/5ahv4a9.png" className="textLoad"/>
+                    </div>
+                </div>
+            </div>
+            
+            {/* <div className="homePart">
+
+                <h1>How to Play:</h1>
+                <div className="howToPlayContainer">
+                    <div className="howToPlay">
+                        <div className="playInstruction">
+
+                        </div>
+                        <div className="playInstruction">
+
+                        </div>
+                        <div className="playInstruction">
+
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+        </div>
     </>)
 }

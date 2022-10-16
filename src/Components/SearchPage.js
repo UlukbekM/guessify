@@ -3,12 +3,13 @@ import axios from 'axios';
 import { Header } from "./Header";
 import { searchItem } from "./Header";
 import { Playlist } from "./Playlist";
-import TextField from '@mui/material/TextField';
+import { Album } from "./Album";
 
 
 export const SearchPage = () => {
     const [token, setToken] = useState("")
     const [playlists, setPlaylists] = useState([])
+    const [albums, setAlbums] = useState([])
     const [search, setSearch] = useState("")
 
     useEffect(() => {
@@ -22,7 +23,10 @@ export const SearchPage = () => {
             window.localStorage.setItem("token", token)
         }
         setToken(token)
-        if(searchItem !== "") getSearch(token, searchItem)
+        if(searchItem !== "") {
+            getSearch(token, searchItem)
+            getAlbums(token, searchItem)
+        }
     }, [])
 
     const getSearch = async (tempToken,searchName) => {
@@ -39,6 +43,20 @@ export const SearchPage = () => {
         setPlaylists(data.playlists.items)
     }
 
+    const getAlbums = async (tempToken,searchName) => {
+        const {data} = await axios.get(`https://api.spotify.com/v1/search`, {
+            headers: {
+                Authorization: `Bearer ${tempToken}`
+            },
+            params: {
+                q: searchName,
+                type: "album",
+                limit: 10
+            }
+        })
+        setAlbums(data.albums.items)
+    }
+
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -47,6 +65,7 @@ export const SearchPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         getSearch(token, search)
+        getAlbums(token, search)
     }
 
     return(<>
@@ -57,13 +76,23 @@ export const SearchPage = () => {
         </form>
 
         <div className="pageContainer">
-            <h3>Search results:</h3>
+            <h3>Playlists:</h3>
             <div className="playlistContainer">
             {playlists.length > 0 &&
                 playlists.map((playlist,index) => (
                     <Playlist key={index} {...playlist}/>
             ))}
             </div>
-        </div> 
+        </div>
+
+        <div className="pageContainer">
+            <h3>Albums</h3>
+            <div className="playlistContainer">
+                {albums.length > 0 &&
+                    albums.map((album,index) => (
+                        <Album key={index} {...album}/>
+                ))}
+            </div>
+        </div>
     </>)
 }

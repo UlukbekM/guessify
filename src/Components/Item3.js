@@ -19,6 +19,8 @@ export const Item3 = () => {
     const [token, setToken] = useState("")
     const [score, setScore] = useState(0)
     const [playlist, setPlaylist] = useState("")
+    const [status, setStatus] = useState("not playing")
+
 
     // const [database, setDatabase] = useState("")
     const [highscore, setHighscore] = useState(0)
@@ -72,7 +74,7 @@ export const Item3 = () => {
         })
         setPlaylist(data)
         // console.log(data)
-        pickNumber(data)
+        // pickNumber(data)
         getData('Leaderboard',data.id)
     }
 
@@ -120,12 +122,22 @@ export const Item3 = () => {
         playAudio(data.tracks.items[arr[0]].track.preview_url)
     }
 
+    // let playedSongs = []
+
     const newSong = () => {
+        // if(playedSongs.length === )
         var arr = [];
         while(arr.length < 4){
             var r = Math.floor(Math.random() * playlist.tracks.total);
-            if(arr.indexOf(r) === -1 && playlist.tracks.items[r] !== undefined && playlist.tracks.items[r].track.preview_url !== null) 
-                arr.push(r);
+            // if(arr.length === 0) {
+            //     if(!playedSongs.includes(playlist.tracks.items[r].track.name)) {
+            //         if(arr.indexOf(r) === -1 && playlist.tracks.items[r] !== undefined && playlist.tracks.items[r].track.preview_url !== null) 
+            //             arr.push(r);
+            //     }
+            // } else {
+                if(arr.indexOf(r) === -1 && playlist.tracks.items[r] !== undefined && playlist.tracks.items[r].track.preview_url !== null) 
+                    arr.push(r);
+            // }
         }
         setSongUrl(playlist.tracks.items[arr[0]].track.preview_url)
         setAnswer(playlist.tracks.items[arr[0]].track.name)
@@ -142,6 +154,15 @@ export const Item3 = () => {
         setSong3(containerArray[2])
         setSong4(containerArray[3])
 
+        // let song = document.getElementById(containerArray[0]);
+        // song.classList.add("buttonHover")
+        // song = document.getElementById(containerArray[1]);
+        // song.classList.add("buttonHover")
+        // song = document.getElementById(containerArray[2]);
+        // song.classList.add("buttonHover")
+        // song = document.getElementById(containerArray[3]);
+        // song.classList.add("buttonHover")
+
         // console.log(playlist.tracks.items[arr[0]].track.preview_url)
         playAudio(playlist.tracks.items[arr[0]].track.preview_url)
     }
@@ -155,20 +176,23 @@ export const Item3 = () => {
         }
     }
     const checkButton = (title) => {
-        if(canRun === true) {
+        if(canRun === true && status === "playing") {
             toggleCanRun()
             const correct = document.getElementById(answer);
             correct.classList.add("correctSong")
+            correct.classList.remove("buttonHover")
     
             if(title === answer) {
                 setScore(score+1)
                 setTimeout(function(){
                     correct.classList.remove("correctSong")
+                    correct.classList.add("buttonHover")
                     newSong()
                 }, 2000);
             } else {
                 const wrong = document.getElementById(title);
                 wrong.classList.add("wrongSong")
+                wrong.classList.remove("buttonHover")
 
                 if(highscore === 0 && score > 0) {
                     addData()
@@ -180,8 +204,12 @@ export const Item3 = () => {
                 setScore(0)
                 setTimeout(function(){
                     correct.classList.remove("correctSong")
+                    correct.classList.add("buttonHover")
                     wrong.classList.remove("wrongSong")
-                    newSong()
+                    wrong.classList.add("buttonHover")
+                    // newSong()
+                    setStatus("not playing")
+                    stopAudio()
                 }, 2000);
             }
         } else {
@@ -196,6 +224,24 @@ export const Item3 = () => {
         // player.volume=
         player.src = url
         player.play()
+    }
+
+    const stopAudio = () => {
+        var player = document.getElementById('audioPlayer')
+        player.pause()
+        setSong1("")
+        setSong2("")
+        setSong3("")
+        setSong4("")
+
+        // let song = document.getElementById(song1);
+        // song.classList.remove("buttonHover")
+        // song = document.getElementById(song2);
+        // song.classList.remove("buttonHover")
+        // song = document.getElementById(song3);
+        // song.classList.remove("buttonHover")
+        // song = document.getElementById(song4);
+        // song.classList.remove("buttonHover")
     }
 
     const getData = (tableName,id) => {
@@ -226,7 +272,7 @@ export const Item3 = () => {
             userName: userName
         }
         
-        await putData('Leaderboard' , userData)
+        putData('Leaderboard' , userData)
         // getData('Leaderboard', playlistID)
         setHighscore(score)
     }
@@ -237,16 +283,22 @@ export const Item3 = () => {
             score: score,
             userName: userName
         }
-        await updateItem(userData)
+        updateItem(userData)
         // getData('Leaderboard', playlistID)
         setHighscore(score)
         setHighscoreName(userName)
     }
 
-
+    const startGame = () => {
+        if(status !== "playing") {
+            setStatus("playing")
+            newSong()
+        }
+    }
 
     return(<>
         <Header/>
+        <div className="headerSpace"/>
         <div className="selectedContainer">
             <div>
                 <h1>{playlist.name}</h1>
@@ -258,7 +310,7 @@ export const Item3 = () => {
             </div>
 
             <div className="playImage">
-                <img width={"250rem"} src={url} alt=""/>
+                <img width={"250rem"} height={"250rem"}src={url} alt=""/>
             </div>
 
             <div>
@@ -271,29 +323,29 @@ export const Item3 = () => {
                 </div>
             </div>
 
-
-            {/* <div>
-                <button onClick={()=>newSong()} className="refreshButton">Refresh</button>
-            </div> */}
+            <div className="playButton">
+                <button onClick={() => startGame()}>Play</button>
+            </div>
 
             <div className="selectedButtons">
-                <div className="flex">
-                    <div className="" id={song1}>
-                        <button onClick={()=>checkButton(song1)}>{song1}</button>
-                    </div>
-                    <div className="" id={song2}>
-                        <button onClick={()=>checkButton(song2)}>{song2}</button>
-                    </div>
+            <div className="flex">
+                <div className="buttonChoice buttonHover" id={song1}>
+                    <button onClick={()=>checkButton(song1)}>{song1}</button>
                 </div>
-                <div className="flex">
-                    <div className="" id={song3}>
-                        <button onClick={()=>checkButton(song3)}>{song3}</button>
-                    </div>
-                    <div className="" id={song4}>
-                        <button onClick={()=>checkButton(song4)}>{song4}</button>
-                    </div>
+                <div className="buttonChoice buttonHover" id={song2}>
+                    <button onClick={()=>checkButton(song2)}>{song2}</button>
                 </div>
             </div>
+            <div className="flex">
+                <div className="buttonChoice buttonHover" id={song3}>
+                    <button onClick={()=>checkButton(song3)}>{song3}</button>
+                </div>
+                <div className="buttonChoice buttonHover" id={song4}>
+                    <button onClick={()=>checkButton(song4)}>{song4}</button>
+                </div>
+            </div>
+            </div>
+            
         </div>
         </>)
 }

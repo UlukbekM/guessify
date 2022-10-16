@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, SCOPE } from "./Home";
+// import { CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, SCOPE } from "./Home";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 
 export var searchItem = ""
 
 export const Header = () => {
+    const CLIENT_ID = 'a36fba8567644702b88f6cab02ecfffa'
+    // export const REDIRECT_URI = 'http://localhost:3000'
+    // export const REDIRECT_URI = 'https://spotify-app-ulukbek.herokuapp.com'
+    let REDIRECT_URI = 'https://spotify-app-inky.vercel.app/'
+    const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
+    const RESPONSE_TYPE = 'token'
+    const SCOPE = 'user-top-read user-read-private user-read-email'
+
+    if(!window.location.href.includes("vercel")) {
+        REDIRECT_URI = 'http://localhost:3000'
+    }
+
     const [token, setToken] = useState("")
     const [search, setSearch] = useState("")
 
@@ -59,13 +70,15 @@ export const Header = () => {
 
     return(<>
     <header>
+        <div className="mainHeader">
         <Box sx={{ flexGrow: 1,
-        backgroundColor: '#191414',
-        padding: 3}}>
+        backgroundColor: '#101010',
+        padding: 3,
+        }}>
             <Grid container spacing={2}>
                 <Grid item xs={1}>
                     <Link to="/">
-                        <div className="tab noselect">Spotify App</div>
+                        <div className="tab noselect">Guessify</div>
                     </Link>
                 </Grid>
 
@@ -84,11 +97,11 @@ export const Header = () => {
                 <>
 
                 {window.location.href.includes("search") ?
-                    <Grid item xs={7}>
+                    <Grid item xs={8}>
                         <div/>
                     </Grid>
                 :                     
-                <Grid item xs={6}>
+                <Grid item xs={7}>
                     <div/>
                 </Grid>}
 
@@ -104,21 +117,21 @@ export const Header = () => {
 
                 <Grid item xs={1}>
                     <Link to="/item1">
-                        <div className="tab noselect">Item 1</div>
+                        <div className="tab noselect">Playlists</div>
                     </Link>
                 </Grid>
 
                 <Grid item xs={1}>
                     <Link to="/item2">
-                        <div className="tab noselect">Item 2</div>
+                        <div className="tab noselect">Top</div>
                     </Link>
                 </Grid>
 
-                <Grid item xs={1}>
+                {/* <Grid item xs={1}>
                     <Link to="/testing">
                         <div className="tab noselect">Testing</div>
                     </Link>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={1}>
                 {!token ?
@@ -149,6 +162,7 @@ export const Header = () => {
             </div>
         </div>
     </div> */}
+    </div>
     </header>
     </>)
 }

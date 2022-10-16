@@ -1,8 +1,12 @@
 import React from "react";
 import {tryAudio, stopAudio} from "./PlaylistPage";
 import { Link } from "react-router-dom";
+import ExplicitIcon from '@mui/icons-material/Explicit';
+
+export let artistChange = ""
 
 export const TopTracks = (song) => {
+    // console.log(song)
     const convertToTime = (duration) => {
         let time = (duration/60000).toFixed(2).toString()
         let index = time.indexOf('.')
@@ -13,23 +17,18 @@ export const TopTracks = (song) => {
     let imgURL = ''
     if(song.album.images.length > 0) {
         imgURL = song.album.images[0].url
-        // console.log(song.track.album.images)
     }
-
-    // const removedCheck = (code) => {
-    //     if(imgURL === '') {
-    //         return '[ REMOVED ]'
-    //     } else if(code === 'ALBUM') {
-    //         return song.album.name
-    //     } else if(code === 'TITLE') {
-    //         return song.name
-    //     }
-    // }
 
     let removedCheck = false
 
     if(song.name === "") {
         removedCheck = true
+    }
+
+    const testFunction = (artist) => {
+        if(window.location.href.includes("artist")) {
+            artistChange = artist
+        }
     }
 
     return(<>
@@ -39,27 +38,33 @@ export const TopTracks = (song) => {
                 <p>{song.count+1}</p>
             </div> */}
 
-            <div className="fSmall">
+            <div className="fSmall topBarItemCenter">
                 <img src={imgURL} alt="" width={"200px"} height={"200px"} className="trackItemPartImages" onMouseOut={()=> stopAudio()} onMouseOver={()=>tryAudio(song.preview_url)}/>
             </div>
 
-            <div className="topSongItem fNormal">
-                <p>{song.name}</p>
+            <div className="fNormal topBarItemLeft item-space">
+                {song.explicit ? <ExplicitIcon  className="artistIcon"/> :<></> }
+                <p> {song.name}</p>
             </div>
 
-            <div className="topSongItem fNormal">
+            <div className="topSongItem fNormal albumArtist item-space artist-list">
                 {/* <p>{song.artists[0].name}</p> */}
                 {song.artists.length > 0 &&
                     song.artists.map((artist,index) => (
-                        <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }}> {artist.name} &nbsp;  </Link>
+                        <>
+                            { (!index ? " ": ',')}
+                            <Link to={`/artist`} state={{artistID: artist.id}} style={{ textDecoration: 'none' }} onClick={()=>testFunction(artist.id)}> 
+                                {artist.name}  
+                            </Link>
+                        </>
                 ))}
             </div>
 
-            <div className="topSongItem fNormal">
+            <div className="topSongItem fNormal item-space">
                 <p>{song.album.name}</p>
             </div>
             
-            <div className="topSongItem fNormal">
+            <div className="topSongItem fNormal item-space">
                 <p>{convertToTime(song.duration_ms)}</p>
             </div>
         </div>

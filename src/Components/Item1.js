@@ -90,6 +90,7 @@ export const Item1 = () => {
 
     return(<>
         <Header/>
+        <div className="headerSpace"/>
         <div className="pageContainer">
             <h3>Featured Playlists</h3>
             <div className="playlistContainer">
