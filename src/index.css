@@ -12,6 +12,7 @@ body {
   background-attachment: fixed;
   /* background-color: ; */
   font-family: 'Roboto', sans-serif;
+  /* position: absolute */
 }
 
 p {
@@ -31,6 +32,7 @@ code {
 
 .homeContainer {
   margin: 0;
+  /* width: 100%; */
 }
 
 .homeContainer h1 {
@@ -72,37 +74,55 @@ code {
 
 .homeLandingLeft {
   /* padding: 15rem 0 0 10rem; */
-  padding-left: 10%;
-  padding-top: 15%;
+  /* padding-left: 10%;
+  padding-top: 15%; */
+  /* text-align: center; */
+  /* display: block; */
+  /* justify-content: center; */
+  /* vertical-align: middle; */
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5% 0 5%;
 }
 
 .homeLandingLeft h1 {
-  font-size: 6em;
+  font-size: 6vw;
   font-weight: bold;
+  text-shadow: 4px -2px 7px rgba(255, 255, 255, 0.29);
 }
 
 .homeLandingLeft h2 {
-  font-size: 2.5em;
+  font-size: 2.2vw;
   color: #22d661;
   font-weight: bold;
+  margin: 0;
 }
 
 .homeLandingLeft h4 {
   font-weight: bold;
+  margin-bottom:  0;
+  font-size: 1vw;
 }
 
 .homeLandingRight {
   flex: 1;
-  display: block;
+  /* display: block;
   justify-content: center;
   padding-top: 12%;
-  padding-left: 10%;
+  padding-left: 10%; */
+  /* padding: 30vh; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 5% 0 5%;
 }
 
 .homeLandingRight img{
-  height: 50vh;
-  border-radius: 10px;
+  height: 20vw;
+  border-radius: 2px;
+  /* filter: drop-shadow(.5rem .5rem 1rem rgb(255, 255, 255)); */
 }
 
 .homePart {
@@ -110,6 +130,13 @@ code {
   width: 100%;
   height: 1000px;
   color: #fff;
+  /* background-image: url(https://storage.googleapis.com/pr-newsroom-wp/1/2020/10/circle_burst1-green-nocopy-1920x733.png);
+
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; */
+  /* text-align: center; */
+  
 }
 
 .homePart h1 {
@@ -117,6 +144,8 @@ code {
   font-size: 6em;
   font-weight: bold;
   padding-top: 1em;
+  /* border-bottom: 2px solid #fff; */
+  /* width: fit-content; */
 }
 
 .header {
@@ -620,7 +649,7 @@ a:active { text-decoration: none; }
 }
 
 .playlistButton {
-  text-align: right;
+  /* text-align: right; */
   flex: 1;
 }
 
@@ -775,18 +804,40 @@ a:active { text-decoration: none; }
 }
 
 .searchBar {
-  width: 8rem;
+  width: 60%;
+  text-align: left;
+  vertical-align: middle;
+  /* box-sizing:border-box; */
+  padding: 0.3rem;
+  font-size: 1em;
+  /* display: flex;
+  justify-content: right; */
+  border-radius: 5px;
+  /* font-family: 'Roboto', sans-serif;
+  box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.06); */
+  border: 1px solid #eee;
+  transition: .3s border-color;
+}
+
+input[type=text] {
+  /* padding:10px;
+  border:0; */
+  /* width:100%; */
+  font-family:inherit;
+  font-size: inherit;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 .searchBarForm {
   text-align: center;
-  display: block;
-  justify-content: center;
+  display: flex;
+  justify-content: right;
+  vertical-align: middle;
 }
 
 .searchPageForm {
   text-align: center;
-  margin: 2rem;
+  margin: 11vh 0 0 0;
 }
 
 .searchPageBar {
@@ -794,12 +845,13 @@ a:active { text-decoration: none; }
   height: 3vh;
   
   border: 2px solid rgb(255, 255, 255);
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .artistIcon {
   vertical-align: middle;
   margin-right: 5px;
+  color: #fff;
 }
 
 .albumArtist a {
@@ -842,29 +894,109 @@ a:active { text-decoration: none; }
 }
 
 .howToPlayContainer {
-  display: flex;
-
-  /* text-align: center; */
-  /* justify-content: space-between; */
-  /* width: 80%; */
-  margin: 2rem 5rem 0 5rem;
-  background-color: #101010;
-  height: 60vh;
+  
+  /* backdrop-filter: blur(10px); */
+  background-color: #083a1a;
+  width: auto;
+  /* height: 60vh; */
+  margin-top: 5rem;
+  margin-left: 10vh;
+  margin-right: 10vh;
   border-radius: 5px;
+  display: block;
+  justify-content: center;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  border: 2px solid #fff;
+  background-image: url(https://storage.googleapis.com/pr-newsroom-wp/1/2021/04/triangle_burst2-green-nocopy-1920x733.png);
+
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  
+  box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -webkit-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -moz-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
 }
 
 .howToPlay {
-  margin: 0 10% 0 10%;
-  width: 50%;
+  /* background-color: #168b3f; */
+  /* margin-left: 5%;
+  margin-right: 5%; */
+  /* margin-top: 1%; */
+  /* width: auto; */
+  /* height: 100%; */
+  height: 20rem;
   display: flex;
   justify-content: space-between;
-  background-color: #083a1a;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
 }
 
 .playInstruction {
-  /* flex: 1; */
-  background-color: #BFBFBF;
-  margin: 4rem 0 4rem 0;
+  margin: 5vh;
+}
+
+.playInstructionCenter {
+  margin: 5vh 0 5vh 0;
+}
+
+.instruction {
+  box-shadow: 5px 9px 14px -1px rgba(0,0,0,0.61);
+  -webkit-box-shadow: 5px 9px 14px -1px rgba(0,0,0,0.61);
+  -moz-box-shadow: 5px 9px 14px -1px rgba(0,0,0,0.61);
+  border: 2px solid #fff;
+  flex: 1;
+  background-color: #101010;
+  text-align: center;
   border-radius: 5px;
-  width: 25%;
+  width: 100px;
+  display: table;
+  box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -webkit-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -moz-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+}
+
+.instruction > *{
+  /* margin: 2rem; */
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.instruction p,h2{
+  margin: 2rem;
+}
+
+.instruction p {
+  vertical-align: middle;
+  font-size: 1vw;
+  font-weight: 100;
+}
+
+.instruction h2 {
+  font-size: 1.5vw;
+}
+
+.playInstructionArrow {
+  flex: 0.5;
+}
+
+.muiIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.9);
+}
+
+.muiIcon p{
+  /* text-align: center; */
+  vertical-align: middle;
+  /* display: flex; */
+}
+
+.playIcon {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  transform: scale(0.9);
 }

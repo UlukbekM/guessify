@@ -43,6 +43,7 @@ export const CategoryPage = () => {
     return(<>
         <Header/>
         {/* {categoryID} */}
+        <div className="headerSpace"/>
         <div className="pageContainer">
             <h3>{categoryName} Playlists</h3>
             <div className="playlistContainer">

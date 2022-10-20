@@ -70,6 +70,7 @@ export const SearchPage = () => {
 
     return(<>
         <Header/>
+        <div className="headerSpace"/>
 
         <form className="searchPageForm" onSubmit={handleSubmit}>
             <input type="text" placeholder="Search.." onChange={handleChange} className="searchPageBar"/>

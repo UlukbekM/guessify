@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Skeleton from '@mui/material/Skeleton';
 
 export const PlaylistCover = (playlist) => {
@@ -62,10 +62,10 @@ export const PlaylistCover = (playlist) => {
                     )}
                 </div>
             </div>
-            <div className="playlistButton">
+            <div className="playlistButton playIcon">
                 <Link to={`/item3`} state={{ playlistID: playlist.id }} style={{ textDecoration: 'none' }}>
                     <button className="topButton">
-                        {/* <PlayArrowIcon className="artistIcon"/> */}
+                        <PlayArrowIcon className="artistIcon"/>
                         Select Playlist
                     </button>
                 </Link>

@@ -4,6 +4,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import LoginIcon from '@mui/icons-material/Login';
+import Login from "@mui/icons-material/Login";
+import LogoutIcon from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
+import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
 
 export var searchItem = ""
 
@@ -14,8 +20,8 @@ export const Header = () => {
     let REDIRECT_URI = 'https://spotify-app-inky.vercel.app/'
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
     const RESPONSE_TYPE = 'token'
-    const SCOPE = 'user-top-read user-read-private user-read-email'
-
+    const SCOPE = 'user-top-read  user-read-email'
+//user-read-private
     if(!window.location.href.includes("vercel")) {
         REDIRECT_URI = 'http://localhost:3000'
     }
@@ -78,7 +84,10 @@ export const Header = () => {
             <Grid container spacing={2}>
                 <Grid item xs={1}>
                     <Link to="/">
-                        <div className="tab noselect">Guessify</div>
+                        <div className="tab noselect muiIcon">
+                                    <HomeIcon className="artistIcon"/>
+                                    Guessify
+                        </div>
                     </Link>
                 </Grid>
 
@@ -88,8 +97,8 @@ export const Header = () => {
                 </Grid>
                 <Grid item xs={1}>
                 <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}>
-                    <div className="tab noselect">
-                        Login
+                    <div className="tab noselect muiIcon">
+                        <LoginIcon className="artistIcon"/> Login
                     </div>
                 </a>
                 </Grid>
@@ -101,29 +110,37 @@ export const Header = () => {
                         <div/>
                     </Grid>
                 :                     
-                <Grid item xs={7}>
+                <Grid item xs={6}>
                     <div/>
                 </Grid>}
 
 
                 {!window.location.href.includes("search") ?
-                <Grid item xs={1}>
-                    <form className="searchBarForm" onSubmit={handleSubmit}>
-                        <input className="searchBar" type="text" placeholder="Search.." onChange={handleChange}/>
-                    </form>
+                <Grid item xs={2}>
+                    {/* <div className="muiIcon"> */}
+                        <form className="searchBarForm" onSubmit={handleSubmit}>
+                            <input className="searchBar" type="text" placeholder="Search.." onChange={handleChange}/>
+                        </form>
+                    {/* </div> */}
                     {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" size="small"/> */}
                 </Grid>
                 : <></>}
 
                 <Grid item xs={1}>
                     <Link to="/item1">
-                        <div className="tab noselect">Playlists</div>
+                        <div className="tab noselect muiIcon">
+                            <FeaturedPlayListIcon className="artistIcon"/>
+                            Playlists
+                        </div>
                     </Link>
                 </Grid>
 
                 <Grid item xs={1}>
                     <Link to="/item2">
-                        <div className="tab noselect">Top</div>
+                        <div className="tab noselect muiIcon">
+                            <EqualizerIcon className="artistIcon"/>
+                            Top
+                        </div>
                     </Link>
                 </Grid>
 
@@ -134,14 +151,19 @@ export const Header = () => {
                 </Grid> */}
 
                 <Grid item xs={1}>
-                {!token ?
+                {/* {!token ?
                 <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
                     <div className="tab noselect">
                         Login
                     </div>
-                </a>: 
-                    <div className="tab noselect" onClick={logout}>Logout</div>}
-                </Grid></>}
+                </a>:  */}
+                    <div className="tab noselect muiIcon" onClick={logout}>
+                        <LogoutIcon className="artistIcon"/>
+                        Logout
+                    </div>
+                    {/* } */}
+                </Grid>
+                </>}
             </Grid>
         </Box>
 
