@@ -41,7 +41,7 @@ export const CategoryPage = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         {/* {categoryID} */}
         <div className="headerSpace"/>
         <div className="pageContainer">

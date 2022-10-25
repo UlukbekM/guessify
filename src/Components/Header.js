@@ -14,7 +14,7 @@ import EqualizerIcon from '@mui/icons-material/Equalizer';
 export var searchItem = ""
 
 export const Header = () => {
-    const CLIENT_ID = 'a36fba8567644702b88f6cab02ecfffa'
+    const CLIENT_ID = `${process.env.SPOTIFY_CLIENT_ID}`
     // export const REDIRECT_URI = 'http://localhost:3000'
     // export const REDIRECT_URI = 'https://spotify-app-ulukbek.herokuapp.com'
     let REDIRECT_URI = 'https://spotify-app-inky.vercel.app/'

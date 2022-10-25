@@ -57,7 +57,7 @@ export const AlbumPage = () => {
     // }
     
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="trackContainer">
             <AlbumCover key={albumID} {...album}/>
             { album ? (

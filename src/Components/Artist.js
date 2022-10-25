@@ -129,9 +129,10 @@ export const Artist = () => {
 
 
     return(<>
-    <Header/>
+    {/* <Header/> */}
 
     <div className="headerSpace"/>
+        {/* <div className="headerSpace"/> */}
     <div className="artistContainer">
         <div className="artistCover">
             <div className="artistItem">

@@ -10,10 +10,14 @@ import { Testing } from './Components/Testing';
 import { SearchPage } from './Components/SearchPage';
 import { AlbumPage } from './Components/AlbumPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Header } from "./Components/Header";
+
 
 function App() {
-  return (
+  return (<>
     <BrowserRouter>
+    
+    <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="item1" element={<Item1 />} />
@@ -27,6 +31,7 @@ function App() {
         <Route path="album" element={<AlbumPage />} />
       </Routes>
     </BrowserRouter>
+  </>
   );
 }
 

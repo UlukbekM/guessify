@@ -297,7 +297,7 @@ export const Item3 = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="headerSpace"/>
         <div className="selectedContainer">
             <div>

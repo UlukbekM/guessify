@@ -54,7 +54,7 @@ export const PlaylistPage = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="trackContainer">
 
         <PlaylistCover key={playlistID} {...playlist}/>

@@ -69,7 +69,7 @@ export const SearchPage = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="headerSpace"/>
 
         <form className="searchPageForm" onSubmit={handleSubmit}>

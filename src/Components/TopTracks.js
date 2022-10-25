@@ -38,7 +38,7 @@ export const TopTracks = (song) => {
                 <p>{song.count+1}</p>
             </div> */}
 
-            <div className="fSmall topBarItemCenter">
+            <div className="fSmall topBarItemLeft">
                 <img src={imgURL} alt="" width={"200px"} height={"200px"} className="trackItemPartImages" onMouseOut={()=> stopAudio()} onMouseOver={()=>tryAudio(song.preview_url)}/>
             </div>
 
@@ -60,11 +60,11 @@ export const TopTracks = (song) => {
                 ))}
             </div>
 
-            <div className="topSongItem fNormal item-space">
+            <div className="topSongItem fNormal item-space topBarItemLeft">
                 <p>{song.album.name}</p>
             </div>
             
-            <div className="topSongItem fNormal item-space">
+            <div className="topSongItem fNormal item-space topBarItemLeft">
                 <p>{convertToTime(song.duration_ms)}</p>
             </div>
         </div>

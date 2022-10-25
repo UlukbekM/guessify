@@ -89,7 +89,7 @@ export const Item1 = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="headerSpace"/>
         <div className="pageContainer">
             <h3>Featured Playlists</h3>

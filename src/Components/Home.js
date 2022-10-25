@@ -10,7 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 export const Home = () => {
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (<>
-        <Header/>
+        {/* <Header/> */}
         <div className="homeContainer noselect">
             <div className="homeLanding">
                 <div className="homeLandingLeft">

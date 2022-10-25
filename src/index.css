@@ -272,7 +272,12 @@ a:active { text-decoration: none; }
   display: block;
   background-color: #282828;
   padding: 1rem;
+  /* margin: 0; */
   /* margin: 1rem; */
+}
+
+.trackContainer h2 {
+  margin-left: 1vh;
 }
 
 .trackItem {
@@ -545,7 +550,7 @@ a:active { text-decoration: none; }
 }
 
 .topSongItem {
-  text-align: center;
+  text-align: left;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -553,7 +558,7 @@ a:active { text-decoration: none; }
 }
 
 .item-space {
-  margin: 0 1rem 0 1rem;
+  margin: 0 2vh 0 2vh;
 }
 
 .artist-list {
@@ -574,6 +579,7 @@ a:active { text-decoration: none; }
   align-items: center;
   justify-content: left;
   display: flex;
+  margin: 0 2vh 0 2vh;
 }
 
 .fSmaller {
@@ -745,10 +751,12 @@ a:active { text-decoration: none; }
 .artistCover {
   display: flex;
   margin: 1rem;
+  margin-top: 7rem;
 }
 
 .artistItem {
-  padding: 1rem;
+  padding: 2rem;
+  padding-top: 2.5rem;
 }
 
 .artistItem img{

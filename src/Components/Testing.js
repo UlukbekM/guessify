@@ -57,7 +57,7 @@ export const Testing = () => {
     // }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         {/* <button onClick={() => fetchDataFromDynamoDb()}> Fetch </button> */}
         {/* <button onClick={() => addDataToDynamoDB()}> Put </button> */}
         {/* <button onClick={() => updateData()}> Update </button> */}

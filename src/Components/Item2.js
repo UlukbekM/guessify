@@ -172,7 +172,7 @@ export const Item2 = () => {
     }
 
     return(<>
-        <Header/>
+        {/* <Header/> */}
         <div className="headerSpace"/>
         <div className="topOptions">
             <div className="topOptionsItem">
@@ -212,11 +212,11 @@ export const Item2 = () => {
             </div>
             <div className="topContainer">
                 {/* <div className="fSmall"><p>#</p></div> */}
-                <div className="fSmall topBarItemCenter"><p></p></div>
+                <div className="fSmall topBarItemLeft"><p></p></div>
                 <div className="fNormal topBarItemLeft"><p>TITLE</p></div>
                 <div className="fNormal topBarItemLeft"><p>ARTIST</p></div>
-                <div className="fNormal topBarItemCenter"><p>ALBUM</p></div>
-                <div className="fNormal topBarItemCenter"><p>DURATION</p></div>
+                <div className="fNormal topBarItemLeft"><p>ALBUM</p></div>
+                <div className="fNormal topBarItemLeft"><p>DURATION</p></div>
             </div>
 
             
