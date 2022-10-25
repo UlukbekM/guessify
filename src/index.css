@@ -1002,6 +1002,10 @@ input[type=text] {
   /* display: flex; */
 }
 
+.muiIcon:hover {
+  color: #101010;
+}
+
 .playIcon {
   display: flex;
   justify-content: right;
