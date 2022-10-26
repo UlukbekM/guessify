@@ -58,7 +58,7 @@ export const Home = () => {
                         <div className="playInstructionCenter instruction">
                             <div>
                             <h2>Step 2:</h2>
-                            <p>Browse through publically available playlists.</p>
+                            <p>Browse through available playlists.</p>
                             </div>
                         </div>
                         <div className="playInstruction instruction">

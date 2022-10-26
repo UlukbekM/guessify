@@ -20,9 +20,9 @@ function App() {
     <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="item1" element={<Item1 />} />
-        <Route path="item2" element={<Item2 />} />
-        <Route path="item3" element={<Item3 />} />
+        <Route path="playlists" element={<Item1 />} />
+        <Route path="top" element={<Item2 />} />
+        <Route path="play" element={<Item3 />} />
         <Route path="playlist" element={<PlaylistPage />} />
         <Route path="categories" element={<CategoryPage />} />
         <Route path="artist" element={<Artist />} />

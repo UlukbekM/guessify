@@ -127,7 +127,7 @@ export const Header = () => {
                 : <></>}
 
                 <Grid item xs={1}>
-                    <Link to="/item1">
+                    <Link to="/playlists">
                         <div className="tab noselect muiIcon">
                             <FeaturedPlayListIcon className="artistIcon"/>
                             Playlists
@@ -136,7 +136,7 @@ export const Header = () => {
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Link to="/item2">
+                    <Link to="/top">
                         <div className="tab noselect muiIcon">
                             <EqualizerIcon className="artistIcon"/>
                             Top

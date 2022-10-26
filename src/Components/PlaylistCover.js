@@ -63,7 +63,7 @@ export const PlaylistCover = (playlist) => {
                 </div>
             </div>
             <div className="playlistButton playIcon">
-                <Link to={`/item3`} state={{ playlistID: playlist.id }} style={{ textDecoration: 'none' }}>
+                <Link to={`/play`} state={{ playlistID: playlist.id }} style={{ textDecoration: 'none' }}>
                     <button className="topButton">
                         <PlayArrowIcon className="artistIcon"/>
                         Select Playlist
