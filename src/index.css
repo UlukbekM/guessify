@@ -42,11 +42,38 @@ code {
 .homeLanding {
   background-color: #101010;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   color: #fff;
   display: flex;
   /* background: rgb(16,16,16);
   background: linear-gradient(175deg, rgba(16,16,16,1) 20%, rgba(22,139,63,1) 100%); */
+}
+
+.homeDown {
+  background-color: #101010;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downIcon {
+  /* transform: scaley(2); */
+  transform: scale(3);
+  color: #fff;
+
+  animation: bounce 2s cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from {
+      transform: translate3d(0, -25px, 0);
+  }
+  to {
+      transform: translate3d(0, 25px, 0);
+  }
 }
 
 .textLoad {
@@ -90,7 +117,7 @@ code {
 .homeLandingLeft h1 {
   font-size: 6vw;
   font-weight: bold;
-  text-shadow: 4px -2px 7px rgba(255, 255, 255, 0.29);
+  /* text-shadow: 4px -2px 7px rgba(255, 255, 255, 0.29); */
 }
 
 .homeLandingLeft h2 {
@@ -128,7 +155,7 @@ code {
 .homePart {
   background-color: #202020;
   width: 100%;
-  height: 1000px;
+  height: 100vh;
   color: #fff;
   /* background-image: url(https://storage.googleapis.com/pr-newsroom-wp/1/2020/10/circle_burst1-green-nocopy-1920x733.png);
 
@@ -146,6 +173,17 @@ code {
   padding-top: 1em;
   /* border-bottom: 2px solid #fff; */
   /* width: fit-content; */
+}
+
+.videoPart {
+  background-color: #202020;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
@@ -929,6 +967,34 @@ input[type=text] {
   box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
   -webkit-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
   -moz-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+}
+
+.videoContainer {
+  padding: 2em;
+  background-color: #101010;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -webkit-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+  -moz-box-shadow: 0px 0px 60px -30px rgba(255,255,255,0.61) inset;
+}
+
+.videoContainer h1 {
+  font-size: 40px;
+}
+
+.videoContainer p {
+  margin-top: 1em;
+  font-weight: 300;
+}
+
+.videoContainer iframe {
+  margin-top: 3em;
 }
 
 .howToPlay {

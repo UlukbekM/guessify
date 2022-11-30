@@ -6,6 +6,7 @@ import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
 import LoginIcon from '@mui/icons-material/Login';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export const Home = () => {
     const AutoplaySlider = withAutoplay(AwesomeSlider);
@@ -37,9 +38,11 @@ export const Home = () => {
                     </AutoplaySlider> */}
                 </div>
             </div>
+            <div className="homeDown">
+                <KeyboardArrowDownIcon className="downIcon"/>
+            </div>
             
             <div className="homePart">
-
                 <h1>How to Play:</h1>
                 <div className="howToPlayContainer">
                     <div className="howToPlay">
@@ -68,6 +71,18 @@ export const Home = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+
+            <div className="videoPart">
+                <div className="videoContainer">
+                    <h1>Video Demo</h1>
+                    <p>The app is currently in development mode and requires a quota extension request approval from Spotify in order for everyone to be able to log in using their Spotify accounts.</p>
+                    <p>I am currently awaiting for their decision regarding the quota extension request since October 16, 2022.</p>
+                    <p>If you're interested in testing out the app yourself, please send an email to ulukbekmambetov@gmail.com with a name and the email associated with your Spotify account.</p> 
+                    <p>The Spotify API allows me to give permission to a select number of users who may authenticate with the app.</p>
+                    <iframe width="854" height="480" src="https://www.youtube.com/embed/A3x6HHgH7MU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
