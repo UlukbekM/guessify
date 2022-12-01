@@ -73,7 +73,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-
+//
 
             <div className="videoPart">
                 <div className="videoContainer">
