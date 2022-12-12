@@ -78,7 +78,7 @@ export const Home = () => {
                 <div className="videoContainer">
                     <h1>Video Demo</h1>
                     <p>The app is currently in development mode and requires a quota extension request approval from Spotify in order for everyone to be able to log in using their Spotify accounts.</p>
-                    <p>I am currently awaiting for their decision regarding the quota extension request since October 16, 2022.</p>
+                    {/* <p>I am currently awaiting for their decision regarding the quota extension request since October 16, 2022.</p> */}
                     <p>If you're interested in testing out the app yourself, please send an email to ulukbekmambetov@gmail.com with a name and the email associated with your Spotify account.</p> 
                     <p>The Spotify API allows me to give permission to a select number of users who may authenticate with the app.</p>
                     <iframe width="854" height="480" src="https://www.youtube.com/embed/A3x6HHgH7MU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
