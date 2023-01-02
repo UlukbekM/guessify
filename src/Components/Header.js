@@ -17,7 +17,7 @@ export const Header = () => {
     const CLIENT_ID = `${process.env.REACT_APP_SPOTIFY_CLIENT_ID}`
     // export const REDIRECT_URI = 'http://localhost:3000'
     // export const REDIRECT_URI = 'https://spotify-app-ulukbek.herokuapp.com'
-    let REDIRECT_URI = 'https://spotify-app-inky.vercel.app/'
+    let REDIRECT_URI = 'https://guessify-ulukbek.vercel.app/'
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
     const RESPONSE_TYPE = 'token'
     const SCOPE = 'user-top-read  user-read-email'
