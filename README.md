@@ -1,7 +1,4 @@
-[Spotify App](https://guessify-ulukbek.vercel.app/)
-
-
-# Spotify App
+# [Guessify](https://guessify-ulukbek.vercel.app/)
 
 This is a web application that utilizes the Spotify Web API to allow users to search for tracks, albums, and artists and create playlists.
 
