@@ -5,8 +5,6 @@
 
 This is a web application that utilizes the Spotify Web API to allow users to search for tracks, albums, and artists and create playlists.
 
-![Screenshot of the Home Page](https://i.imgur.com/6cL0d2y.png)
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
